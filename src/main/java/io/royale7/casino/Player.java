@@ -7,7 +7,7 @@ public class Player {
     private int id;
     private String name;
     private String password;
-    private String accountBalance;
+    private double accountBalance;
 
     protected Double getAccountBalance(double amount){
         return 0.0;
