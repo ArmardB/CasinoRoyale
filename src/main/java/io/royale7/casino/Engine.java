@@ -5,15 +5,16 @@ package io.royale7.casino;
  */
 public class Engine {
 
-    UserManager userManager;
+    PlayerManager playerManager;
     GameManager gameManager;
 
    
     Engine() {
-        userManager = new UserManager();
+        playerManager = new PlayerManager();
         gameManager = new GameManager();
     }
 
+<<<<<<< HEAD
     protected Player login(int userID, String password) throws NullPointerException{
         return null;
     }
@@ -23,6 +24,17 @@ public class Engine {
     }
 
     protected Player createNewUser(String name, String password){
+=======
+    protected Player login(int playerID, String password) throws NullPointerException{
+        return null;
+    }
+
+    protected Player getDefaultPlayer(){
+        return null;
+    }
+
+    protected Player createDefaultPlayer(String name, String password){
+>>>>>>> 8266d196dc8bc60bafd62daeb8a1ec143233a4c5
         return null;
     }
 
