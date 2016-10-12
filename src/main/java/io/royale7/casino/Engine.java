@@ -29,4 +29,10 @@ public class Engine {
     protected Game play(int gameID) {
         return null;
     }
+
+    protected void exit() {
+        
+    }
+
+
 }
