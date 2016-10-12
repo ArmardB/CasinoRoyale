@@ -8,6 +8,7 @@ public class Engine {
     UserManager userManager;
     GameManager gameManager;
 
+   
     Engine() {
         userManager = new UserManager();
         gameManager = new GameManager();
@@ -28,4 +29,10 @@ public class Engine {
     protected Game play(int gameID) {
         return null;
     }
+
+    protected void exit() {
+        
+    }
+
+
 }
