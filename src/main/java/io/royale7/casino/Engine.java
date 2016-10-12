@@ -14,15 +14,15 @@ public class Engine {
         gameManager = new GameManager();
     }
 
-    protected User login(int userID, String password) throws NullPointerException{
+    protected Player login(int userID, String password) throws NullPointerException{
         return null;
     }
 
-    protected User getDefaultUser(){
+    protected Player getDefaultUser(){
         return null;
     }
 
-    protected User createNewUser(String name, String password){
+    protected Player createNewUser(String name, String password){
         return null;
     }
 

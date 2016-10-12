@@ -5,8 +5,8 @@ package io.royale7.casino;
  */
 public class Casino {
     private Engine engine;
-    private User user;
-    private User invalidUser;
+    private Player user;
+    private Player invalidUser;
     private Game game;
 
     Casino(){
