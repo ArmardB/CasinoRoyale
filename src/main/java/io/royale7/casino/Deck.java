@@ -8,7 +8,8 @@ import java.util.List;
  */
 public class Deck {
 
-    public List<Card> cards = new ArrayList<Card>();
+    private List<Card> cards = new ArrayList<Card>();
+    private Card singleCard;
 
 
     public Deck(){
@@ -18,5 +19,14 @@ public class Deck {
             }
         }
     }
+
+    public List<Card> getCards(){
+        return this.cards;
+    }
+
+    public Card getCard(int index){
+        return cards.get(index);
+    }
+
 
 }
