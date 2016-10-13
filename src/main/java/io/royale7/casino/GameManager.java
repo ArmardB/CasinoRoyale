@@ -50,8 +50,8 @@ public class GameManager {
     }
 
     //May return Null
-    private Game getGame(int gameId){
+    public Game getGame(int gameId){
         return gameContainer.get(gameId);
     }
-    
+
 }

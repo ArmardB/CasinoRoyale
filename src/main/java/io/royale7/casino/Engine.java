@@ -26,10 +26,7 @@ public class Engine {
     }
 
     protected Game play(int gameID) {
-
-        Game selectedGame = gameManager.getGameContainer().get(gameID);
-        return selectedGame;
-
+        return gameManager.getGame(gameID);
     }
 
     protected void exit() {
