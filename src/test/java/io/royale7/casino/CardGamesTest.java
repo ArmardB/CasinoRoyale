@@ -12,18 +12,16 @@ public class CardGamesTest {
     CardGamesMock cardGamesMock;
 
 
+
     private class CardGamesMock extends CardGames{
 
-        protected ArrayList<CardPlayer> cardPlayers;
+        protected List<CardPlayer> cardPlayers;
+        protected List<Player> players;
         protected HashMap<CardPlayer,List<Card>> gameTable;
 
-        public CardGamesMock(ArrayList<Player> players) {
-            super(players);
-        }
-
-        public List<CardPlayer> getCardPlayers(){
+        public CardGamesMock() {
+            this.players = super.setPlayersContainer;
             this.cardPlayers = super.cardPlayers;
-            return cardPlayers;
         }
 
         public HashMap<CardPlayer,List<Card>> getGameTable(){
@@ -34,23 +32,24 @@ public class CardGamesTest {
     }
     @Before
     public void initialize(){
-        ArrayList<Player> playerList = new ArrayList<>();
-        playerList.add(new Player("Bob", "zoo"));
-        playerList.add(new Player("Bill", "aquarium"));
-        playerList.add(new Player("Joe", "safari"));
+        cardGamesMock = new CardGamesMock();
+        cardGamesMock.players.add(new Player("Bob", "zoo"));
+        cardGamesMock.players.add(new Player("Bill", "aquarium"));
+        cardGamesMock.players.add(new Player("Joe", "safari"));
+        cardGamesMock.players.add(new Player("Jo", "safar"));
 
-        cardGamesMock = new CardGamesMock(playerList);
+
     }
 
     @Test
     public void initializeCardPlayersTest(){
-        Assert.assertEquals("Should return 4", 4, cardGamesMock.getCardPlayers().size());
+        Assert.assertEquals("Should return 4", 4, cardGamesMock.players.size());
     }
 
     @Test
     public void dealTest(){
         cardGamesMock.deal(2);
-        CardPlayer samplePlayer = cardGamesMock.getCardPlayers().get(1);
+        CardPlayer samplePlayer = cardGamesMock.cardPlayers.get(0);
         Assert.assertEquals("Should return 2", 2, cardGamesMock.getGameTable().get(samplePlayer).size());
     }
 
