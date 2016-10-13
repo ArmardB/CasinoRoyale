@@ -1,8 +1,6 @@
 package io.royale7.casino;
 
-/**
- * Created by jonathanleczner on 10/12/16.
- */
+
 public class Slots {
     private boolean running;
     private String inputString;
