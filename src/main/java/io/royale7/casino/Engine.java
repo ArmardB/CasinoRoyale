@@ -38,7 +38,9 @@ public class Engine {
     }
 
     protected Game play(int gameID) {
-        return gameManager.getGame(gameID);
+        Game game = gameManager.getGame(gameID);
+        game.setLoggedInUsersContainer(loggedInPlayersContainer);
+        return game;
     }
 
     protected void exit() {
