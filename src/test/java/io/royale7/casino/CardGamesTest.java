@@ -1,48 +1,57 @@
 package io.royale7.casino;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import static com.sun.tools.internal.xjc.reader.Ring.add;
-
-/**
- * Created by carinablair on 10/12/16.
- */
 public class CardGamesTest {
     CardGamesMock cardGamesMock;
+
 
     private class CardGamesMock extends CardGames{
 
         protected ArrayList<CardPlayer> cardPlayers;
+        protected HashMap<CardPlayer,List<Card>> gameTable;
 
         public CardGamesMock(ArrayList<Player> players) {
             super(players);
-            this.cardPlayers = initializeCardPlayers(players);
         }
-        public void init(){
 
+        public List<CardPlayer> getCardPlayers(){
+            this.cardPlayers = super.cardPlayers;
+            return cardPlayers;
         }
+
+        public HashMap<CardPlayer,List<Card>> getGameTable(){
+            this.gameTable = super.gameTable;
+            return gameTable;
+        }
+        public void init(){}
     }
     @Before
     public void initialize(){
         ArrayList<Player> playerList = new ArrayList<>();
-        {{
-            add(new Player("Bob", "zoo"));
-            add(new Player("Bill", "aquarium"));
-            add(new Player("Joe", "safari"));
-        }}
+        playerList.add(new Player("Bob", "zoo"));
+        playerList.add(new Player("Bill", "aquarium"));
+        playerList.add(new Player("Joe", "safari"));
+
         cardGamesMock = new CardGamesMock(playerList);
     }
 
     @Test
-    public void dealTest(){
-        cardGamesMock.deal(3);
-        int expected = 4;
-        Assert.assertTrue(cardGamesMock.gameTable.size()==expected);
+    public void initializeCardPlayersTest(){
+        Assert.assertEquals("Should return 4", 4, cardGamesMock.getCardPlayers().size());
     }
+
+    @Test
+    public void dealTest(){
+        cardGamesMock.deal(2);
+        CardPlayer samplePlayer = cardGamesMock.getCardPlayers().get(1);
+        Assert.assertEquals("Should return 2", 2, cardGamesMock.getGameTable().get(samplePlayer).size());
+    }
+
 }
