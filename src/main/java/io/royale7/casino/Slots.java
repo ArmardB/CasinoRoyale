@@ -7,6 +7,16 @@ public class Slots extends Game {
     private SlotsDisplay display;
     private Player player;
 
+<<<<<<< Updated upstream
+=======
+import java.util.List;
+
+public class Slots extends Game {
+
+    private SlotsDisplay display;
+    private Player player;
+
+>>>>>>> Stashed changes
     private boolean running;
     private String inputString;
     private String outputString;

@@ -13,7 +13,6 @@ public class SlotsTest {
 
     @Test
     public void setupTest() {
-
-
     }
+
 }

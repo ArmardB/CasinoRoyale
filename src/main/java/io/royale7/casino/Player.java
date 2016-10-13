@@ -28,7 +28,7 @@ public class Player {
      *      and under no other circumstances make calls to the below listed Java snippet.
      *
      *      Thank you for your patience and understanding,
-     *      Jonathan Michael Leczner & Nazhir Martese Jackson
+     *      Jonathan "The Butterfly" Leczner & Nazhir "Neutron" Jackson
      */
     protected static void resetIdCounter() { idCounter = 1; }
 
