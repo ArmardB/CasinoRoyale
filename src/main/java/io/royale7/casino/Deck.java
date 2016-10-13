@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by sujatharavikumar on 10/12/16.
  */
-public class Deck {
+public class    Deck {
 
     public List<Card> cards = new ArrayList<Card>();
 
