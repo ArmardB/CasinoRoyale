@@ -2,9 +2,6 @@ package io.royale7.casino;
 
 import java.util.List;
 
-/**
- * Created by carinablair on 10/11/16.
- */
 public class PittyPat{
     private Deck deck;
     private Card topofDeck;

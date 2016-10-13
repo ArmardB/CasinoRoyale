@@ -1,8 +1,7 @@
 package io.royale7.casino;
 
-/**
- * Created by robertodedeus on 10/12/16.
- */
+import java.text.NumberFormat;
+
 public class Display {
     public static void welcomeMenu(){
         outputLn("Welcome to the casino. Please login or create an account.");
@@ -27,6 +26,11 @@ public class Display {
 
     public static void addFundsMenu(){
         outputLn("How much would you like to add to your account? ");
+    }
+
+    public static void printFormatBalance(double balance) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        outputLn(formatter.format(balance));
     }
 
     public static void playRoomMenu(){

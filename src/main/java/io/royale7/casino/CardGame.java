@@ -47,4 +47,5 @@ public class CardGame extends Game{
         deck = new Deck();
         return deck;
     }
+
 }
