@@ -9,12 +9,12 @@ import org.junit.Test;
  */
 public class HiLowTest {
 
-    HiLow hiLow;
+    HighLow highLow;
     Deck deck;
 
     @Before
     public void init(){
-       hiLow = new HiLow();
+       highLow = new HighLow();
         deck = new Deck();
     }
 
@@ -23,6 +23,11 @@ public class HiLowTest {
         Suit expected = Suit.Spades;
         Suit actual = deck.cards.get(0).getSuit();
         Assert.assertEquals("Should return card", expected, actual);
+
+    }
+
+    @Test
+    public void playAgainTest(){
 
     }
 
