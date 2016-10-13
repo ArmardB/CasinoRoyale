@@ -125,7 +125,7 @@ public class Casino {
             Display.invalidSelection();
             playRoomMenu();
         } else {
-            game.init();
+            game.init(engine.getLoggedInPlayersContainer());
         }
     }
 

@@ -11,7 +11,7 @@ public abstract class Game {
     private int gameID;
 
 
-    public void init(){
+    public void init(List<Player> loggedInPlayers){
 
     }
 
