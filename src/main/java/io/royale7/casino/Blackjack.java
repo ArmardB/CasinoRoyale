@@ -1,9 +1,9 @@
 package io.royale7.casino;
 
-public class Blackjack extends Game{
+public class Blackjack extends CardGames{
 
     public void init(){
-        System.out.println(loggedInUsersContainer);
+        Display.outputLn("Blackjack");
     }
 
 }

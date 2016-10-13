@@ -2,7 +2,7 @@ package io.royale7.casino;
 
 import java.util.List;
 
-public class Slots extends Game {
+public class Slots extends LuckGames {
 
     private SlotsDisplay display;
     private Player player;
@@ -13,13 +13,11 @@ public class Slots extends Game {
     private String[] slotsValues;
     private int winAmount;
 
-    public Slots() {
-
-    }
-
     public boolean isRunning() { return running; }
 
-    public void init(List<Player> playerList) { return; }
+    public void init() {
+        Display.outputLn("Slots");
+    }
 
     public void gameLoop() { return; }
 
