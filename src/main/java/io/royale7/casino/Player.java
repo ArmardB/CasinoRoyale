@@ -30,6 +30,7 @@ public class Player {
      *      Thank you for your patience and understanding,
      *      Jonathan "The Butterfly" Leczner & Nazhir "Neutron" Jackson
      */
+
     protected static void resetIdCounter() { idCounter = 1; }
 
     protected int getId() {

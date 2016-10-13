@@ -1,19 +1,25 @@
 package io.royale7.casino;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Game {
-    private int gameID;
-    List<Player> loggedInUsersContainer;
 
+    private static int gameID;
+    private List<Player> setPlayers;
+    private ArrayList<Player> players = new ArrayList<>();
 
-    public void init(){
-
+    public Game(ArrayList<Player> players){
+        this.players = players;
     }
 
-    public void setLoggedInUsersContainer(List<Player> loggedInUsersContainer){
-        this.loggedInUsersContainer = loggedInUsersContainer;
+    public void setPlayersContainer(List<Player> players){
+        this.setPlayers= players;
+    }
+
+    public ArrayList<Player> getPlayers(){
+        return this.players;
     }
 
 }
