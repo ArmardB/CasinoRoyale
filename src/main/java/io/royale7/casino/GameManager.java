@@ -31,24 +31,6 @@ public class GameManager {
     }
 
 
-    private boolean addGame(int id, Game game){
-        Game addedGame = gameContainer.put(id,game);
-        return isSuccessful(addedGame);
-    }
-
-    private boolean deleteGame(int id, Game game){
-        Game removedGame = gameContainer.remove(id);
-        return isSuccessful(removedGame);
-    }
-
-    private boolean isSuccessful(Game game){
-        boolean success = false;
-        if(game !=null) {
-            success = true;
-        }
-        return success;
-    }
-
     //May return Null
     private Game getGame(int gameId){
         return gameContainer.get(gameId);
