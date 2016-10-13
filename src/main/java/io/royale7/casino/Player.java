@@ -22,6 +22,9 @@ public class Player {
         this.accountBalance = 0;
     }
 
+    // DONT FUCKING USE THIS, DIS FOR TESTS
+    protected void resetIdCounter() { idCounter = 0; }
+
     protected int getId() {
         return id;
     }

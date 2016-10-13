@@ -18,12 +18,14 @@ public class PlayerManager {
         return playerContainer;
     }
 
-    protected Player createNewPlayer(String name, String password) {
-        return null;
+    protected Player getDefaultPlayer() {
+        return invalidPlayer;
     }
 
-    protected Player getDefaultPlayer() {
-        return null;
+    protected Player createNewPlayer(String name, String password) {
+        Player newPlayer = new Player(name, password);
+        playerContainer.put(newPlayer.getId(), newPlayer);
+        return newPlayer;
     }
 
     protected Player login(int id, String password) {
