@@ -17,6 +17,11 @@ public class Player {
         accountBalance = 0;
     }
 
+    public Player(){
+        this.name = "Dealer";
+        this.accountBalance = 0;
+    }
+
     protected int getId() {
         return id;
     }
