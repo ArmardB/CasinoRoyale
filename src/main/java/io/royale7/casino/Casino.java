@@ -72,7 +72,7 @@ public class Casino {
     }
 
     private void newCustomerMenuAction(String name, String password){
-        player = engine.createDefaultPlayer(name, password);
+        player = engine.createNewPlayer(name, password);
         loungeMenu();
     }
 

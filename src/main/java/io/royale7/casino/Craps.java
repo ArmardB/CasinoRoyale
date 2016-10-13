@@ -1,5 +1,8 @@
 package io.royale7.casino;
 
-public class Craps extends Game {
+public class Craps extends LuckGame {
+    public void init(){
+        Display.outputLn("Craps");
+    }
 
 }

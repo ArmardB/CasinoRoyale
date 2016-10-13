@@ -5,47 +5,62 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class CardGame extends Game{
-    protected List<CardPlayer> cardPlayers = new ArrayList<CardPlayer>();
-    protected HashMap<Integer, List<Card>> gameTable = new HashMap<>();
-    private List<Card> playerHand = new ArrayList<>();
-    private Deck deck;
+public abstract class CardGame extends Game{
+    protected List<Player> players = new ArrayList<>();
 
-    CardGame(){
+    protected List<CardPlayer> cardPlayers = new ArrayList<>();
+    protected HashMap<CardPlayer, List<Card>> gameTable = new HashMap<>();
+    protected Deck deck;
+
+    public CardGame(){
+        this.players = super.setPlayersContainer;
         this.createDeck();
+        this.cardPlayers = initializeCardPlayers(players);
     }
 
+    @Override
+    public void settle(){
 
-    public CardGame(List<CardPlayer> cardPlayers) {
-        this.createDeck();
-        this.cardPlayers = cardPlayers;
     }
 
-    public HashMap<Integer,List<Card>> deal(int handSize){
+    @Override
+    public void bet(){
+
+    }
+
+    public abstract void init();
+
+    protected List<CardPlayer> initializeCardPlayers(List<Player> players){
+        cardPlayers.add(new CardPlayer());
+        for(Player player:players){
+            cardPlayers.add(new CardPlayer(player));
+        }
+        return cardPlayers;
+    }
+
+    private void createDeck(){
+        deck = new Deck();
+    }
+
+    public HashMap<CardPlayer,List<Card>> deal(int handSize){
         this.shuffle();
         this.setGameTable();
         for(int i = 0; i < handSize; i++){
             for (CardPlayer c: cardPlayers){
-                gameTable.get(c).add(deck.getCard(i));
+                gameTable.get(c).add(deck.cards.get(i));
             }
         }
         return gameTable;
-
     }
 
     private void setGameTable(){
         for (CardPlayer c: cardPlayers) {
-            gameTable.put(c.getCardPlayerID(), playerHand);
+            gameTable.put(c,c.getHand());
         }
     }
 
     private void shuffle(){
-        Collections.shuffle(deck.getCards());
-    }
-
-    private Deck createDeck(){
-        deck = new Deck();
-        return deck;
+        Collections.shuffle(deck.cards);
     }
 
 }
