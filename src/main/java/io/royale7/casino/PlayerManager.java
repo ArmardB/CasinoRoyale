@@ -3,12 +3,14 @@ package io.royale7.casino;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class PlayerManager {
     private Map<Integer, Player> playerContainer;
     private static Player invalidPlayer = new Player("Invalid Player", null);
 
     public PlayerManager(){
         playerContainer = new HashMap<>();
+        playerContainer.put(0, invalidPlayer);
     }
 
     public Map<Integer, Player> getPlayerContainer() {
