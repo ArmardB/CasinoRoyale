@@ -10,7 +10,7 @@ public class AppTest {
     Casino casino = new Casino();
 
     @Test
-    void mainTest(){
+    public void mainTest(){
         Casino casino = new Casino();
     }
 

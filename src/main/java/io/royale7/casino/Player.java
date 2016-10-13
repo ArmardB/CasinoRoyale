@@ -19,6 +19,8 @@ public class Player {
 
     public Player(){
         this.name = "Dealer";
+        this.password = "hunter2";
+        id = idCounter++;
         this.accountBalance = 0;
     }
 
