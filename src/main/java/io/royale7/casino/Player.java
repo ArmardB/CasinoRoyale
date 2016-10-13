@@ -22,6 +22,9 @@ public class Player {
         this.accountBalance = 0;
     }
 
+    // DONT FUCKING USE THIS, DIS FOR TESTS
+    protected static void resetIdCounter() { idCounter = 1; }
+
     protected int getId() {
         return id;
     }
@@ -40,5 +43,10 @@ public class Player {
 
     protected void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
+    }
+
+    @Override
+    public String toString() {
+        return "Id: " + this.id + "\n Username: " + this.name + "\n Password: " + this.password;
     }
 }
