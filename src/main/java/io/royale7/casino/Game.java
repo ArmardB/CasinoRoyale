@@ -1,7 +1,18 @@
 package io.royale7.casino;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by robertodedeus on 10/12/16.
  */
-public class Game {
+public abstract class Game {
+    private int gameID;
+
+
+    public void init(){
+
+    }
+
 }

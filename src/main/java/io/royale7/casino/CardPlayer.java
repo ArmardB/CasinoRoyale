@@ -1,9 +1,13 @@
 package io.royale7.casino;
 
-/**
- * Created by sujatharavikumar on 10/12/16.
- */
+
 public class CardPlayer {
 
+    /* Stubbed out to check error messages on the Card Game class. Still needs to be completed */
 
+    private int cardPlayerID;
+
+    public int getCardPlayerID(){
+        return cardPlayerID;
+    }
 }

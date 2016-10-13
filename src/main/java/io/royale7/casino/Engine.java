@@ -8,7 +8,6 @@ public class Engine {
     PlayerManager playerManager;
     GameManager gameManager;
 
-   
     Engine() {
         playerManager = new PlayerManager();
         gameManager = new GameManager();
@@ -39,7 +38,7 @@ public class Engine {
     }
 
     protected Game play(int gameID) {
-        return null;
+        return gameManager.getGame(gameID);
     }
 
     protected void exit() {
