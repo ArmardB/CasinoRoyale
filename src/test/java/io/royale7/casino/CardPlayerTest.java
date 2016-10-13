@@ -6,10 +6,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
-/**
- * Created by jonathanleczner on 10/13/16.
- */
 public class CardPlayerTest {
     CardPlayer dealer;
     CardPlayer player;

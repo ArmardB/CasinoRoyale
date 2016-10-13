@@ -2,7 +2,6 @@ package io.royale7.casino;
 
 public class Card {
 
-
     private Rank rank;
     private Suit suit;
 

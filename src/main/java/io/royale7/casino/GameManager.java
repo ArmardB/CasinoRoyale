@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Nate Holloway on 10/12/16.
  * Slots
  Horse Racing
  Street Craps
@@ -15,6 +14,7 @@ import java.util.Map;
  Baccarat
  *
  */
+
 public class GameManager {
 
     //won't work until all games are created and extend Game

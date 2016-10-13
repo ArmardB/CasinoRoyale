@@ -1,6 +1,5 @@
 package io.royale7.casino;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
