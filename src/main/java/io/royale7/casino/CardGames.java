@@ -6,19 +6,31 @@ import java.util.HashMap;
 import java.util.List;
 
 public abstract class CardGames extends Game{
-    protected ArrayList<CardPlayer> cardPlayers = new ArrayList<>();
+    protected List<Player> players = new ArrayList<>();
+
+    protected List<CardPlayer> cardPlayers = new ArrayList<>();
     protected HashMap<CardPlayer, List<Card>> gameTable = new HashMap<>();
     protected Deck deck;
 
-    public CardGames(ArrayList<Player> players){
-        super(players);
+    public CardGames(){
+        this.players = super.setPlayersContainer;
         this.createDeck();
         this.cardPlayers = initializeCardPlayers(players);
     }
 
+    @Override
+    public void settle(){
+
+    }
+
+    @Override
+    public void bet(){
+
+    }
+
     public abstract void init();
 
-    protected ArrayList<CardPlayer> initializeCardPlayers(ArrayList<Player> players){
+    protected List<CardPlayer> initializeCardPlayers(List<Player> players){
         cardPlayers.add(new CardPlayer());
         for(Player player:players){
             cardPlayers.add(new CardPlayer(player));
