@@ -129,8 +129,6 @@ public class Casino {
         } else {
             game.init();
         }
-
-        game.init();
     }
 
     private void logOutMenu(){
