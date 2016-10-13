@@ -23,7 +23,7 @@ public class CardPlayerTest {
 
     @Test
     public void getIdTest() {
-        int expected = 2; // dealer is 0?
+        int expected = 2; // dealer is 1, invalid is 0
         int actual = player.getCardPlayerID();
         assertEquals(expected, actual);
     }
