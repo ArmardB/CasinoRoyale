@@ -1,18 +1,17 @@
 package io.royale7.casino;
 
-/**
- * Created by robertodedeus on 10/12/16.
- */
 public class Casino {
     private Engine engine;
-    private User user;
-    private User invalidUser;
+    private Player player;
+    private Player invalidPlayer;
+
     private Game game;
+    private Game invalidGame;
 
     Casino(){
         engine = new Engine();
-        invalidUser = engine.getDefaultUser();
-        user = invalidUser;
+        invalidPlayer = engine.getDefaultPlayer();
+        player = invalidPlayer;
     }
 
     void init(){
@@ -41,21 +40,21 @@ public class Casino {
 
     private void loginMenu(){
         Display.loginMenu();
-        Display.outputLn("Please enter user your ID: ");
-        int userID = UserInput.promptInt();
+        Display.outputLn("Please enter` your ID: ");
+        int playerID = UserInput.promptInt();
         Display.outputLn("Please enter your password: ");
         String userPassword = UserInput.promptString();
-        loginMenuAction(userID, userPassword);
+        loginMenuAction(playerID, userPassword);
     }
 
-    private void loginMenuAction(int userID, String userPassword){
+    private void loginMenuAction(int playerID, String playerPassword){
         try{
-            user = engine.login(userID, userPassword);
+            player = engine.login(playerID, playerPassword);
         } catch (NullPointerException e){
-            user = invalidUser;
+            player = invalidPlayer;
         }
 
-        if(user == invalidUser){
+        if(player == invalidPlayer){
             Display.invalidUser();
             mainMenu();
         } else {
@@ -73,7 +72,7 @@ public class Casino {
     }
 
     private void newCustomerMenuAction(String name, String password){
-        engine.createNewUser(name, password);
+        player = engine.createDefaultPlayer(name, password);
         loungeMenu();
     }
 
@@ -106,7 +105,7 @@ public class Casino {
     }
 
     private void addFundsMenuAction(double amount){
-        user.setAccountBalance(amount);
+        player.setAccountBalance(amount);
         loungeMenu();
     }
 
@@ -116,13 +115,17 @@ public class Casino {
     }
 
     private void playRoomMenuAction(int playRoomMenuSelection){
-        switch (playRoomMenuSelection){
-            // todo: get list of available games and display a case for each
-            // todo: provide a way for the user to return to the lounge
-            default:
-                Display.invalidSelection();
-                loungeMenu();
-                break;
+        try {
+            game = engine.play(playRoomMenuSelection);
+        } catch (NullPointerException e) {
+            game = invalidGame;
+        }
+
+        if(game == null) {
+            Display.invalidSelection();
+            playRoomMenu();
+        } else {
+            game.init();
         }
     }
 
@@ -132,7 +135,7 @@ public class Casino {
     }
 
     private void logOutMenuAction(){
-        user = invalidUser;
+        player = invalidPlayer;
         mainMenu();
     }
 

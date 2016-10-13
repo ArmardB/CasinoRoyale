@@ -1,34 +1,46 @@
 package io.royale7.casino;
 
-/**
- * Created by robertodedeus on 10/12/16.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Engine {
 
-    UserManager userManager;
+    PlayerManager playerManager;
     GameManager gameManager;
+    private List<Player> loggedInPlayersContainer;
 
-    // Engine for our Casino
-    // Line two
     Engine() {
-        userManager = new UserManager();
+        playerManager = new PlayerManager();
         gameManager = new GameManager();
+        loggedInPlayersContainer = new ArrayList<>();
     }
 
-    protected User login(int userID, String password) throws NullPointerException{
+    protected Player login(int userID, String password) throws NullPointerException{
+        Player loggedInPlayer = playerManager.login(userID, password);
+        if(loggedInPlayer != null){
+            loggedInPlayersContainer.add(loggedInPlayer);
+            return loggedInPlayer;
+        } else {
+            return null;
+        }
+    }
+
+    protected Player getDefaultPlayer(){
         return null;
     }
 
-    protected User getDefaultUser(){
+    protected Player createDefaultPlayer(String name, String password){
         return null;
     }
 
-    protected User createNewUser(String name, String password){
-        return null;
+    public List<Player> getLoggedInPlayersContainer() {
+        return loggedInPlayersContainer;
     }
 
     protected Game play(int gameID) {
-        return null;
+        Game game = gameManager.getGame(gameID);
+        game.setLoggedInUsersContainer(loggedInPlayersContainer);
+        return game;
     }
 
     protected void exit() {

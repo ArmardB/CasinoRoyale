@@ -1,7 +1,14 @@
 package io.royale7.casino;
 
-/**
- * Created by sujatharavikumar on 10/11/16.
- */
+import org.junit.Test;
+
 public class AppTest {
+
+    Casino casino = new Casino();
+
+    @Test
+    public void mainTest(){
+        Casino casino = new Casino();
+    }
+
 }
