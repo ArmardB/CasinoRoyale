@@ -15,9 +15,15 @@ public class Engine {
         loggedInPlayersContainer = new ArrayList<>();
     }
 
+    protected Player createNewPlayer(String name, String password){
+        Player newPlayer = playerManager.createNewPlayer(name, password);
+        loggedInPlayersContainer.add(newPlayer);
+        return newPlayer;
+    }
+
     protected Player login(int userID, String password) throws NullPointerException{
         Player loggedInPlayer = playerManager.login(userID, password);
-        if(loggedInPlayer != null){
+        if(loggedInPlayer != playerManager.getDefaultPlayer()){
             loggedInPlayersContainer.add(loggedInPlayer);
             return loggedInPlayer;
         } else {
@@ -26,15 +32,12 @@ public class Engine {
     }
 
     protected Player getDefaultPlayer(){
-        return null;
-    }
-
-    protected Player createDefaultPlayer(String name, String password){
-        return null;
+        return playerManager.getDefaultPlayer();
     }
 
     public List<Player> getLoggedInPlayersContainer() {
         return loggedInPlayersContainer;
+
     }
 
     protected Game play(int gameID) {
@@ -43,8 +46,8 @@ public class Engine {
         return game;
     }
 
-    protected void exit() {
-        
+    protected void exitCasino() {
+        // Cash out and write out to storage
     }
 
 
