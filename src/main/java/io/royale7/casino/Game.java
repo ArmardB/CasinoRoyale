@@ -8,11 +8,16 @@ import java.util.List;
  * Created by robertodedeus on 10/12/16.
  */
 public abstract class Game {
-    private int gameID;
 
+    private static int gameID;
+    private ArrayList<Player> players = new ArrayList<>();
 
-    public void init(){
+    public Game(ArrayList<Player> players){
+        this.players = players;
+    }
 
+    public ArrayList<Player> getPlayers(){
+        return this.players;
     }
 
 }
