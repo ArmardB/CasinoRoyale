@@ -1,9 +1,12 @@
 package io.royale7.casino;
 
-/**
- * Created by jonathanleczner on 10/12/16.
- */
-public class Slots {
+import java.util.List;
+
+public class Slots extends Game {
+
+    private SlotsDisplay display;
+    private Player player;
+
     private boolean running;
     private String inputString;
     private String outputString;
@@ -16,7 +19,7 @@ public class Slots {
 
     public boolean isRunning() { return running; }
 
-    public void init() { return; }
+    public void init(List<Player> playerList) { return; }
 
     public void gameLoop() { return; }
 
@@ -29,4 +32,14 @@ public class Slots {
     public int determineWinnings() { return 0; }
 
     public void quit() { return; }
+
+    private class SlotsDisplay extends Display {
+        private String welcomeMenu =
+                "Welcome my son to Slooooooooooooooooooooots. What do?\n" +
+                "[1] Play\n" +
+                "[2] Quit\n";
+        private String userInfo =
+                player.getName() + "\n" +
+                player.getAccountBalance();
+    }
 }
