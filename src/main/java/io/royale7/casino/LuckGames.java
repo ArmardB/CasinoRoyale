@@ -15,5 +15,5 @@ public abstract class LuckGames extends Game {
     }
 
     public abstract void init();
-    
+
 }

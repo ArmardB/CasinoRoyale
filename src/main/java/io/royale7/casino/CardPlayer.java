@@ -1,12 +1,32 @@
 package io.royale7.casino;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CardPlayer {
+    private Player player;
+    private boolean isDealer;
+    private List<Card> hand;
 
-    /* Stubbed out to check error messages on the Card Game class. Still needs to be completed */
+    public CardPlayer() {
+        player = new Player();
+        isDealer = true;
+        hand = new ArrayList<>();
+    }
 
-    private int cardPlayerID;
+    public CardPlayer(Player player) {
+        this.player = player;
+        isDealer = false;
+        hand = new ArrayList<>();
+    }
 
-    public int getCardPlayerID(){
-        return cardPlayerID;
+    protected boolean isDealer() { return isDealer; }
+
+    protected List<Card> getHand() {
+        return hand;
+    }
+
+    protected int getCardPlayerID() {
+        return player.getId();
     }
 }

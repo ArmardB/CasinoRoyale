@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public abstract class CardGames extends Game{
-    protected ArrayList cardPlayers;
-    protected HashMap<Integer, List<Card>> gameTable = new HashMap<>();
+    protected ArrayList<CardPlayer> cardPlayers = new ArrayList<>();
+    protected HashMap<CardPlayer, List<Card>> gameTable = new HashMap<>();
     protected List<Card> playerHand = new ArrayList<>();
     protected Deck deck;
 
@@ -17,15 +17,22 @@ public abstract class CardGames extends Game{
         this.cardPlayers = initializeCardPlayers(players);
     }
 
-    private ArrayList<CardPlayer> initializeCardPlayers(ArrayList<Player> players){
-        ArrayList<CardPlayer> cardPlayers = new ArrayList<>();
+    public abstract void init();
+
+    protected ArrayList<CardPlayer> initializeCardPlayers(ArrayList<Player> players){
+        cardPlayers.add(new CardPlayer());
         for(Player player:players){
             cardPlayers.add(new CardPlayer(player));
         }
         return cardPlayers;
     }
 
-    public HashMap<Integer,List<Card>> deal(int handSize){
+    private Deck createDeck(){
+        deck = new Deck();
+        return deck;
+    }
+
+    public HashMap<CardPlayer,List<Card>> deal(int handSize){
         this.shuffle();
         this.setGameTable();
         for(int i = 0; i < handSize; i++){
@@ -34,12 +41,11 @@ public abstract class CardGames extends Game{
             }
         }
         return gameTable;
-
     }
 
     private void setGameTable(){
         for (CardPlayer c: cardPlayers) {
-            gameTable.put(c.getCardPlayerID(), playerHand);
+            gameTable.put(c, c.getHand());
         }
     }
 
@@ -47,9 +53,6 @@ public abstract class CardGames extends Game{
         Collections.shuffle(deck.cards);
     }
 
-    private Deck createDeck(){
-        deck = new Deck();
-        return deck;
-    }
-    public abstract void init();
+
+
 }

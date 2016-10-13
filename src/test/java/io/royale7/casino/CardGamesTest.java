@@ -1,5 +1,6 @@
 package io.royale7.casino;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runners.Parameterized;
@@ -14,11 +15,14 @@ import static com.sun.tools.internal.xjc.reader.Ring.add;
  */
 public class CardGamesTest {
     CardGamesMock cardGamesMock;
+
     private class CardGamesMock extends CardGames{
 
-        public CardGamesMock(ArrayList<Player> cardPlayers) {
-            super(cardPlayers);
-            this.cardPlayers = cardPlayers;
+        protected ArrayList<CardPlayer> cardPlayers;
+
+        public CardGamesMock(ArrayList<Player> players) {
+            super(players);
+            this.cardPlayers = initializeCardPlayers(players);
         }
         public void init(){
 
@@ -36,9 +40,9 @@ public class CardGamesTest {
     }
 
     @Test
-    public void deal(){
-
-
-
+    public void dealTest(){
+        cardGamesMock.deal(3);
+        int expected = 4;
+        Assert.assertTrue(cardGamesMock.gameTable.size()==expected);
     }
 }
