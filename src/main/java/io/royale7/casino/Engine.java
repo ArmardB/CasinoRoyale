@@ -42,7 +42,7 @@ public class Engine {
 
     protected Game play(int gameID) {
         Game game = gameManager.getGame(gameID);
-        game.setLoggedInUsersContainer(loggedInPlayersContainer);
+        game.setPlayersContainer(loggedInPlayersContainer);
         return game;
     }
 
