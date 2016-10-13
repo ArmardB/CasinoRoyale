@@ -41,4 +41,9 @@ public class Player {
     protected void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + this.id + "\n Username: " + this.name + "\n Password: " + this.password;
+    }
 }

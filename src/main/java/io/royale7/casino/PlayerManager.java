@@ -8,6 +8,7 @@ import java.util.Map;
  */
 public class PlayerManager {
     private Map<Integer, Player> playerContainer;
+    private static Player invalidPlayer = new Player("Invalid Player", null);
 
     public PlayerManager(){
         playerContainer = new HashMap<>();
@@ -17,7 +18,7 @@ public class PlayerManager {
         return playerContainer;
     }
 
-    protected Player login(int id, String password) {
+    protected Player createNewPlayer(String name, String password) {
         return null;
     }
 
@@ -25,7 +26,14 @@ public class PlayerManager {
         return null;
     }
 
-    protected Player createNewPlayer(String name, String password) {
-        return null;
+    protected Player login(int id, String password) {
+        Player loginResult = invalidPlayer;
+        if (playerContainer.containsKey(id)) {
+            Player query = playerContainer.get(id);
+            if (query.getPassword().equals(password)) {
+                loginResult = query;
+            }
+        }
+        return loginResult;
     }
 }
