@@ -1,17 +1,10 @@
 package io.royale7.casino;
 
-/**
- * Created by robertodedeus on 10/12/16.
- */
 public class Casino {
     private Engine engine;
-<<<<<<< HEAD
-    private Player user;
-    private Player invalidUser;
-=======
     private Player player;
     private Player invalidPlayer;
->>>>>>> 8266d196dc8bc60bafd62daeb8a1ec143233a4c5
+
     private Game game;
     private Game invalidGame;
 
