@@ -23,7 +23,7 @@ public class Player {
     }
 
     // DONT FUCKING USE THIS, DIS FOR TESTS
-    protected void resetIdCounter() { idCounter = 0; }
+    protected static void resetIdCounter() { idCounter = 1; }
 
     protected int getId() {
         return id;
