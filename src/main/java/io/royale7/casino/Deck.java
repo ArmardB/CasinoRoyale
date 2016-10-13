@@ -16,13 +16,5 @@ public class Deck {
         }
     }
 
-    public List<Card> getCards(){
-        return this.cards;
-    }
-
-    public Card getCard(int index){
-        return cards.get(index);
-    }
-
 }
 

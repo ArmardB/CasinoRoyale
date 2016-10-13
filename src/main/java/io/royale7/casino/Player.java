@@ -21,7 +21,16 @@ public class Player {
         this.accountBalance = 0;
     }
 
-    // DONT FUCKING USE THIS, DIS FOR TESTS
+    /** Official notice:
+     * Dear Sir, Madam, or other non-binary gender non-conforming patrons of this knowledge source,
+     *
+     *      We ask that you please restrict usage of this function/method for purely test-based purposes,
+     *      and under no other circumstances make calls to the below listed Java snippet.
+     *
+     *      Thank you for your patience and understanding,
+     *      Jonathan "The Butterfly" Leczner & Nazhir "Neutron" Jackson
+     */
+
     protected static void resetIdCounter() { idCounter = 1; }
 
     protected int getId() {
