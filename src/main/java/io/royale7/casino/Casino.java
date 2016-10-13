@@ -8,6 +8,7 @@ public class Casino {
     private Player player;
     private Player invalidPlayer;
     private Game game;
+    private Game invalidGame;
 
     Casino(){
         engine = new Engine();
@@ -116,14 +117,20 @@ public class Casino {
     }
 
     private void playRoomMenuAction(int playRoomMenuSelection){
-        switch (playRoomMenuSelection){
-            // todo: get list of available games and display a case for each
-            // todo: provide a way for the player to return to the lounge
-            default:
-                Display.invalidSelection();
-                loungeMenu();
-                break;
+        try {
+            game = engine.play(playRoomMenuSelection);
+        } catch (NullPointerException e) {
+            game = invalidGame;
         }
+
+        if(game == null) {
+            Display.invalidSelection();
+            playRoomMenu();
+        } else {
+            game.init();
+        }
+
+        game.init();
     }
 
     private void logOutMenu(){
