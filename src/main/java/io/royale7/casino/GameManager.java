@@ -30,7 +30,6 @@ public class GameManager {
         gameContainer.put(8, new PittyPat());
     }
 
-
     //May return Null
     public Game getGame(int gameId){
         return gameContainer.get(gameId);
