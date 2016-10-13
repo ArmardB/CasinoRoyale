@@ -1,13 +1,13 @@
 package io.royale7.casino;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 
-public class FileStorage implements Storage {
+public class FileStorage {
 
-    public void loadPlayersInformation() {
+    /*public void loadPlayersInformation() {
         return;
     }
 
@@ -24,6 +24,6 @@ public class FileStorage implements Storage {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
 }
