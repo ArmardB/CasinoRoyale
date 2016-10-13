@@ -1,6 +1,7 @@
 package io.royale7.casino;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardPlayer {
@@ -9,18 +10,24 @@ public class CardPlayer {
     private List<Card> hand;
 
     public CardPlayer() {
-
+        player = new Player();
+        isDealer = true;
+        hand = new ArrayList<>();
     }
 
     public CardPlayer(Player player) {
-
+        this.player = player;
+        isDealer = false;
+        hand = new ArrayList<>();
     }
 
-    public List<Card> getHand() {
-        return null;
+    protected boolean isDealer() { return isDealer; }
+
+    protected List<Card> getHand() {
+        return hand;
     }
 
-    public int getCardPlayerID() {
-        return 0;
+    protected int getCardPlayerID() {
+        return player.getId();
     }
 }
