@@ -8,7 +8,7 @@ public class War extends CardGames {
 
     private List<CardPlayer> warPlayers = new ArrayList<>();
 
-    War(List<Player> players){
+    War(ArrayList<Player> players){
         super(players);
         this.warPlayers = super.cardPlayers;
     }

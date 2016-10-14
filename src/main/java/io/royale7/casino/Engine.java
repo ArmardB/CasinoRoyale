@@ -7,7 +7,7 @@ public class Engine {
 
     PlayerManager playerManager;
     GameManager gameManager;
-    private List<Player> loggedInPlayersContainer;
+    private ArrayList<Player> loggedInPlayersContainer;
 
     Engine() {
         playerManager = new PlayerManager();

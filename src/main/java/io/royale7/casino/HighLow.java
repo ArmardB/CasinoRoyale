@@ -1,44 +1,58 @@
 package io.royale7.casino;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.sun.tools.corba.se.idl.InvalidCharacter;
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by armardbellamy on 10/12/16.
- */
-public class HighLow {
+public class HighLow extends CardGames {
 
-    private Deck deck;
-    private Boolean isRunning = true;
+    public HighLowDisplay highLowDisplay = new HighLowDisplay();
+    private List<CardPlayer> cardPlayers;
+    private boolean isPlaying = true;
+
+    public HighLow(ArrayList<Player> players){
+       super(players);
+        this.cardPlayers = super.cardPlayers;
+    }
 
     public void init(){
-        while(isRunning){
-            
+        highLowDisplay.displayCardPlayers();
+
+        playGame();
+    }
+
+    public void playGame(){
+        while(isPlaying){
+            // Do some stuff
+            deal(1);
+            //Display.outputLn("CARD: " + cardPlayers.get(0).getHand().size());
+            //2Display.outputLn("CARD: " + cardPlayers.get(1).getHand().get(0).getRank());
+
+            //Display.outputLn("Will the next card be [H]igher or [L]ower...?");
+
+            String userGuess = UserInput.promptString();
+
+
+
         }
     }
 
+    public void verifyIfUserGuessIsCorrect(){
+        // Test whether user's guess if higher or lower than current card
 
-
-    public Card dealACard(){
-        return deck.cards.get(0);
     }
 
-    public Boolean playAgain () throws InvalidCharacter {
-        Display.outputLn("Game over!!!!");
-        Display.outputLn("Would you like to play again [Y]es or [N]o...?");
-        String userAnswer = UserInput.promptString().toLowerCase();
 
 
-        if (userAnswer.equals("n")) {
-            // Settle account then exit to game room
-            return false;
-        } else if (userAnswer.equals("y")) {
-            // keep playing
-            return true;
+
+
+    public class HighLowDisplay extends Display{
+
+        public void displayCardPlayers(){
+            outputLn("There are "+cardPlayers.size()+ " card players");
         }
 
     }
+
 
 
 

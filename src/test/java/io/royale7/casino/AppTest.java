@@ -10,4 +10,9 @@ public class AppTest {
     public void mainTest(){
         Casino casino = new Casino();
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fancyDisplay
 }

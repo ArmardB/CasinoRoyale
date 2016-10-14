@@ -8,10 +8,20 @@ import java.util.List;
 public abstract class Game {
 
     private static int gameID;
+
+    private ArrayList<Player> setPlayers;
+
+
     private List<Player> players = new ArrayList<>();
+
 
     public Game(List<Player> players){
         this.players = players;
+    }
+
+
+    public void setPlayers(ArrayList<Player> players){
+        this.setPlayers= players;
     }
 
     public abstract void init();
@@ -19,6 +29,7 @@ public abstract class Game {
     public abstract double settle(double winnings);
 
     public abstract double bet(double bet);
+
 
     public List<Player> getPlayers(){
         return this.players;

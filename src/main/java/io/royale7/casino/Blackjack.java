@@ -7,7 +7,7 @@ public class Blackjack extends CardGames{
 
     private List<CardPlayer> blackjackPlayers = new ArrayList<>();
 
-    public Blackjack(List<Player> players){
+    public Blackjack(ArrayList<Player> players){
         super(players);
         this.blackjackPlayers = super.cardPlayers;
     }
