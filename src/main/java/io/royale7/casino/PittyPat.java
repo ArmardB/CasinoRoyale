@@ -20,12 +20,15 @@ public class PittyPat extends CardGames{
         Display.outputLn("PittyPat");
     }
 
+
+    @Override
     public double settle(double winnings){
         return 0.0;
     }
 
-    public double bet(double bet){
-        return 0.0;
+    @Override
+    public void bet(double bet, Player player){
+
     }
 
 }

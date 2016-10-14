@@ -1,4 +1,5 @@
 package io.royale7.casino;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,8 +89,8 @@ public class Craps extends LuckGames {
         return playAgain;
     }
 
-     boolean checkIfPlayerWinsOnTheFirstRoll(int diceValue){
-         hasPlayerWon =false;
+    boolean checkIfPlayerWinsOnTheFirstRoll(int diceValue){
+        hasPlayerWon =false;
         if (diceValue == 7 || diceValue ==11){
             hasPlayerWon = true;
             //crapsDisplay.displayPlayerWins();
@@ -99,8 +100,8 @@ public class Craps extends LuckGames {
     }
 
 
-     boolean checkIfPlayerLosesOnTheFirstRoll(int diceValue){
-         hasPlayerLost = false;
+    boolean checkIfPlayerLosesOnTheFirstRoll(int diceValue){
+        hasPlayerLost = false;
         if (diceValue == 2 || diceValue == 3 || diceValue == 12){
             hasPlayerLost = true;
             //crapsDisplay.displayPlayerLoses();
@@ -129,7 +130,7 @@ public class Craps extends LuckGames {
         }
 
         private void displayPlayerSize(){
-           outputLn("Player " +crapsPlayers.get(0).getName()+ " is playing the game" );
+            outputLn("Player " +crapsPlayers.get(0).getName()+ " is playing the game" );
         }
 
     }

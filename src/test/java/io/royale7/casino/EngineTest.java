@@ -22,6 +22,14 @@ public class EngineTest {
     }
 
     @Test
+    public void loginTestFail(){
+        Engine engine = new Engine();
+        Player expected = engine.getDefaultPlayer();
+        Player actual = engine.login(0, "123");
+        Assert.assertSame("Login did not return the expected user", expected, actual);
+    }
+
+    @Test
     public void getDefaultPlayerTest(){
         Engine engine = new Engine();
         Player expected = engine.playerManager.getPlayerContainer().get(0);
@@ -49,5 +57,5 @@ public class EngineTest {
         Assert.assertEquals("Should return Craps", expected, actual);
     }
 
-    
+
 }

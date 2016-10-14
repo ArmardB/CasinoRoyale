@@ -20,8 +20,8 @@ public abstract class LuckGames extends Game {
     }
 
     @Override
-    public double bet(double bet){
-        return 0.0;
+    public void bet(double bet, Player player){
+
     }
 
 }

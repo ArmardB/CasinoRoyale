@@ -38,6 +38,7 @@ public abstract class CardGames extends Game{
         for(int i = 0; i < handSize; i++){
             for (CardPlayer c: cardPlayers){
                 gameTable.get(c).add(deck.cards.get(i));
+                deck.cards.remove(i);
             }
         }
         return gameTable;
@@ -59,10 +60,21 @@ public abstract class CardGames extends Game{
     }
 
     @Override
-    public double bet(double bet){
-        return 0.0;
+    public void bet(double bet, Player player){
+        if(checkPlayerFunds(bet,player)){
+            double newAccountBalance = player.getAccountBalance() - bet;
+            player.setAccountBalance(newAccountBalance);
+        }
+        //else
+
     }
 
+    private boolean checkPlayerFunds(double bet, Player player){
+        boolean confirmation = true;
+        if(player.getAccountBalance() < bet){
+            confirmation = false;
+        }
+        return confirmation;
+    }
 }
-
 
