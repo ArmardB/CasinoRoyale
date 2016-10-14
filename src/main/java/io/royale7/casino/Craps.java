@@ -2,8 +2,7 @@ package io.royale7.casino;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Craps extends LuckGames {
+public class Craps extends LuckGame {
     private CrapsDisplay crapsDisplay = new CrapsDisplay();
     UserInput input = new UserInput();
     private boolean hasPlayerWon = false;
@@ -21,6 +20,16 @@ public class Craps extends LuckGames {
     public void init(){
         crapsDisplay.displayPlayerSize();
         playGame();
+    }
+
+    @Override
+    public double settle(double winnings) {
+        return 0;
+    }
+
+    @Override
+    public double bet(double bet) {
+        return 0;
     }
 
     //Using default implementations of bet() and settle() from the LuckGame class
@@ -77,7 +86,6 @@ public class Craps extends LuckGames {
         return hasPlayerLost;
     }
 
-
     boolean checkIfPlayerWantsToPlayAgain(){
         playAgain = false;
         crapsDisplay.displayIfPlayerWantsToPlayAgain();
@@ -133,6 +141,4 @@ public class Craps extends LuckGames {
         }
 
     }
-
-
 }

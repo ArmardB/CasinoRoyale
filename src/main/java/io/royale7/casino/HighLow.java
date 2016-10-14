@@ -1,9 +1,8 @@
 package io.royale7.casino;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class HighLow extends CardGames {
+public class HighLow extends CardGame {
 
     public HighLowDisplay highLowDisplay = new HighLowDisplay();
     private List<CardPlayer> cardPlayers;

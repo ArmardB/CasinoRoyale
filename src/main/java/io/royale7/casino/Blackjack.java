@@ -3,7 +3,7 @@ package io.royale7.casino;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Blackjack extends CardGames{
+public class Blackjack extends CardGame{
 
     private List<CardPlayer> blackjackPlayers = new ArrayList<>();
 

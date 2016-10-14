@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class CardGames extends Game{
+public abstract class CardGame extends Game{
     protected List<CardPlayer> cardPlayers = new ArrayList<>();
     protected HashMap<CardPlayer, List<Card>> gameTable;
     protected Deck deck;
 
-    public CardGames(List<Player> players){
+    public CardGame(List<Player> players){
         super(players);
         this.createDeck();
         this.cardPlayers = initializeCardPlayers(players);
