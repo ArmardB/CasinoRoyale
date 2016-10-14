@@ -24,8 +24,9 @@ public class GameManager {
 
 
     public void createGamesContainer(List<Player> loggedInPlayersContainer){
-        this.gameContainer = new HashMap<>();
+        this.gameContainer = new HashMap<Integer, Game>();
         gameContainer.put(1, new Craps(loggedInPlayersContainer));
+
         //gameContainer.put(2, new Slots());
         //gameContainer.put(3, new HorseRacing());
         //gameContainer.put(4, new Blackjack());
