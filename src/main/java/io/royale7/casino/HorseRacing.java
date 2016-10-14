@@ -5,16 +5,24 @@ import java.util.*;
 /**
  * Created by nazhirjackson on 10/13/16.
  */
-public class HorseRacing extends LuckGame{
+public class HorseRacing extends LuckGames{
     public Horse userChoice;
-    public Map<Integer, Horse> horsesTrack;
+    public List<Horse> horsesTrack;
     public HorseMenus horseMenus;
     protected Player player = new Player();
+
+    public static void main(String[] args) {
+        List<Player> playerList = new ArrayList<>();
+        playerList.add(new Player());
+        HorseRacing s = new HorseRacing(playerList);
+        s.init();
+    }
 
     public HorseRacing(List<Player> players) {
         super(players);
         this.player = super.luckPlayers.get(0);
-        horsesTrack = new HashMap<>();
+        horsesTrack = new ArrayList<>();
+        horseMenus = new HorseMenus();
     }
 
     @Override
@@ -28,8 +36,8 @@ public class HorseRacing extends LuckGame{
     }
 
     @Override
-    public double bet(double bet) {
-        return 0;
+    public void bet(double bet, Player player){
+
     }
 
     public Horse createHorse(String name, String speed){
@@ -43,40 +51,42 @@ public class HorseRacing extends LuckGame{
         Horse horse3 = createHorse("Bob", "23.5");
         Horse horse4 = createHorse("Larry", "22");
 
-        horsesTrack.put(1, horse1);
-        horsesTrack.put(2, horse2);
-        horsesTrack.put(3,horse3);
-        horsesTrack.put(4,horse4);
+        horsesTrack.add(horse1);
+        horsesTrack.add(horse2);
+        horsesTrack.add(horse3);
+        horsesTrack.add(horse4);
     }
 
-    private void run() {
-
-        betOnHorse();
-
-
+    public void run() {
+        putHorsesOnTrack();
+        pickHorse();
+        horseMenus.askForBetAmountPrompt();
+        loopThroughRaceToshow();
+        horseMenus.endOfRace();
     }
-    private void betOnHorse() {
+
+    private void pickHorse() {
         horseMenus.askWhichHorseBettingOn();
         try {
             int choice = UserInput.promptInt();
             userChoice = horsesTrack.get(choice);
-        }catch (InputMismatchException e){
+        }catch (InputMismatchException | IndexOutOfBoundsException e){
             horseMenus.wrongInput();
-            horseMenus.askWhichHorseBettingOn();
-        }
-    }
-    public void betAmount() {
 
+        }
     }
 
     private void loopThroughRaceToshow() {
         int count = 1;
+        horseMenus.horsesStart();
         while(count < 5){
+            horsesTrack = shuffleHorsesPosition();
             horseMenus.momentInRace(count);
             horseMenus.horsesPosOnTrack();
+
             count++;
             try {
-                Thread.sleep(5000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 String error = "Error with Thread.sleep";
                 horseMenus.outputLn(error);
@@ -84,23 +94,19 @@ public class HorseRacing extends LuckGame{
         }
         
     }
-    public Map<Integer, Horse> getHorseTrack(){ return horsesTrack;}
+    public List<Horse> getHorseTrack(){ return horsesTrack;}
 
     Horse result() {
        Horse endOfRace = horsesTrack.get(1);
      return endOfRace;
     }
-    private Map<Integer, Horse> shuffleHorsesPosition() {
+    public List<Horse> shuffleHorsesPosition() {
 
-        List<Integer> keys = new ArrayList(horsesTrack.keySet());
-        Collections.shuffle(keys);
-        Map<Integer, Horse> shuffledTrack = new HashMap<>();
-        for (Integer o : keys) {
-
-            shuffledTrack.put(o,horsesTrack.get(o));
-        }
+       List<Horse> shuffledTrack = horsesTrack;
+               Collections.shuffle(shuffledTrack);
         return shuffledTrack;
     }
+    
 
     public class Horse {
         private String name;
@@ -121,7 +127,7 @@ public class HorseRacing extends LuckGame{
 
         @Override
         public String toString(){
-            String nameAndSpeed = this.name + " with a speed of " + this.speed + " mph";
+            String nameAndSpeed = getName() + " with a speed of " + getSpeed() + " mph";
             return nameAndSpeed;
         }
 
@@ -134,14 +140,14 @@ public class HorseRacing extends LuckGame{
         }
 
         public void wrongInput(){
-            String input = "Sorry wrong input Please Enter a NUMBER";
+            String input = "Sorry wrong input Please Enter a NUMBER\n";
             outputLn(input);
         }
 
         public void askWhichHorseBettingOn() {
             String horsePick = "Which horse would you like to bet on?"+
-                    "\n 1: " + horsesTrack.get(1).toString() + "\n 2: " + horsesTrack.get(2).toString()+
-                    "\n 3: " + horsesTrack.get(3).toString() + "\n 4: " + horsesTrack.get(4).toString();
+                    "\n 0: " + horsesTrack.get(0).toString() + "\n 1: " + horsesTrack.get(1).toString()+
+                    "\n 2: " + horsesTrack.get(2).toString() + "\n 3: " + horsesTrack.get(3).toString();
             outputLn(horsePick);
         }
 
@@ -151,19 +157,25 @@ public class HorseRacing extends LuckGame{
         }
 
         public void horsesStart() {
-            String starting = "*Pow* And the Horses are on their way!";
+            String starting = "*Pow* And the Horses are on their way!\n";
             outputLn(starting);
         }
 
         public void horsesPosOnTrack(){
             String horsesPositions =
-                    "\n First Place! :D : " + horsesTrack.get(1) + "\n Second Place :) : " + horsesTrack.get(2)+
-                    "\n Third Place :( : " + horsesTrack.get(3) + "\n Fourth Place :( : " + horsesTrack.get(4);
-            outputLn(horsesPositions);
+                    "\n First Place! :D : " + horsesTrack.get(0).toString() + "\n Second Place :) : " + horsesTrack.get(1).toString() +
+                    "\n Third Place :( : " + horsesTrack.get(2).toString() + "\n Fourth Place :( : " + horsesTrack.get(3).toString();
+           outputLn(horsesPositions);
         }
         public void momentInRace(int i){
+            System.out.println("----------------------------------------------------");
             String fourthOfAMile = i + "/4 Miles currently and the standings are!:";
             outputLn(fourthOfAMile);
+        }
+        public void endOfRace() {
+            System.out.println("----------------------------------------------------");
+            String winner = "The Winning Horse is!!! : " + horsesTrack.get(0).getName();
+            outputLn(winner);
         }
         
 
