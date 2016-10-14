@@ -7,7 +7,8 @@ public class War extends CardGames {
 
     List<CardPlayer> cardPlayers;
 
-    War(){
+    War(List<Player> players){
+        super(players);
         this.cardPlayers = super.cardPlayers;
     }
 
