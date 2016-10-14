@@ -6,11 +6,11 @@ import java.util.Map;
 
 public class War extends CardGames {
 
-    List<CardPlayer> cardPlayers;
+    private List<CardPlayer> warPlayers = new ArrayList<>();
 
     War(ArrayList<Player> players){
         super(players);
-        this.cardPlayers = super.cardPlayers;
+        this.warPlayers = super.cardPlayers;
     }
 
     public void init(){
