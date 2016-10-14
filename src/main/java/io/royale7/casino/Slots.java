@@ -1,13 +1,17 @@
 package io.royale7.casino;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static io.royale7.casino.Slots.Slot.getRandomSlotValue;
 
 public class Slots extends LuckGame {
+
+    public static void main(String[] args) {
+        List<Player> playerList = new ArrayList<>();
+        playerList.add(new Player());
+        Slots s = new Slots(playerList);
+        s.init();
+    }
 
     protected enum Slot {
         CHERRIES,   // x1
@@ -35,9 +39,6 @@ public class Slots extends LuckGame {
     private int winAmount;
 
     public Slots(List<Player> playerList) {
-        super(playerList);
-        slotsDisplay = new SlotsDisplay();
-        slotsValues = new Slot[NUMREELS][NUMREELS];
         player = playerList.get(0);
     }
 
@@ -61,9 +62,11 @@ public class Slots extends LuckGame {
         running = true;
         prompted = false;
         winAmount = 0;
-        for (Slot[] rows : slotsValues) {
-            for (Slot slot : rows) {
-                slot = getRandomSlotValue();
+        slotsDisplay = new SlotsDisplay();
+        slotsValues = new Slot[NUMREELS][NUMREELS];
+        for (int row = 0; row < NUMREELS; row++) {
+            for (int value = 0; value < NUMREELS; value++) {
+                slotsValues[row][value] = getRandomSlotValue();
             }
         }
         gameLoop();
