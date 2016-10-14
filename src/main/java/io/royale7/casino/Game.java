@@ -1,27 +1,39 @@
 package io.royale7.casino;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Game{
+public abstract class Game {
 
     private static int gameID;
-    protected List<Player> setPlayersContainer = new ArrayList<>();
-    private ArrayList<Player> players = new ArrayList<>();
 
-    public abstract void settle();
+    private ArrayList<Player> setPlayers;
 
-    public abstract void bet();
+
+    private List<Player> players = new ArrayList<>();
+
+
+    public Game(List<Player> players){
+        this.players = players;
+    }
+
+
+    public void setPlayers(ArrayList<Player> players){
+        this.setPlayers= players;
+    }
 
     public abstract void init();
 
-    public void setPlayersContainer(List<Player> players){
-        this.setPlayersContainer = players;
-    }
+    public abstract double settle(double winnings);
 
-    public ArrayList<Player> getPlayers(){
+    public abstract double bet(double bet);
+
+
+    public List<Player> getPlayers(){
         return this.players;
     }
 
 }
+
