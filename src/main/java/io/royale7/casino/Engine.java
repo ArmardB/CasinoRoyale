@@ -21,13 +21,13 @@ public class Engine {
         return newPlayer;
     }
 
-    protected Player login(int userID, String password) throws NullPointerException{
+    protected Player login(int userID, String password) {
         Player loggedInPlayer = playerManager.login(userID, password);
         if(loggedInPlayer != playerManager.getDefaultPlayer()){
             loggedInPlayersContainer.add(loggedInPlayer);
             return loggedInPlayer;
         } else {
-            return null;
+            return playerManager.getDefaultPlayer();
         }
     }
 
@@ -37,7 +37,6 @@ public class Engine {
 
     public List<Player> getLoggedInPlayersContainer() {
         return loggedInPlayersContainer;
-
     }
 
     protected Game play(int gameID) {

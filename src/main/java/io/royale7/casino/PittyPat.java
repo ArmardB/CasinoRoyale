@@ -3,7 +3,7 @@ package io.royale7.casino;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PittyPat extends CardGames{
+public class PittyPat extends CardGame {
     private Deck deck;
     private Card topofDeck;
     private List<Card> pileOfMatches;
@@ -11,7 +11,7 @@ public class PittyPat extends CardGames{
     private static int handSize = 5;
     private List<CardPlayer> pittypatPlayers = new ArrayList<>();
 
-    public PittyPat(ArrayList<Player> players){
+    public PittyPat(List<Player> players){
         super(players);
         this.pittypatPlayers = super.cardPlayers;
     }

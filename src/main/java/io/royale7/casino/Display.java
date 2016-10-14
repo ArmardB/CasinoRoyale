@@ -3,6 +3,8 @@ package io.royale7.casino;
 import java.text.NumberFormat;
 
 public class Display {
+
+
     public static void welcomeMenu(){
         outputLn("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         outputLn("$                                                    $");

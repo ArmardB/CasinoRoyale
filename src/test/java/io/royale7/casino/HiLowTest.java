@@ -4,7 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
+
+/*
  * Created by armardbellamy on 10/12/16.
  */
 public class HiLowTest {
@@ -14,7 +15,8 @@ public class HiLowTest {
 
     @Before
     public void init(){
-       highLow = new HighLow();
+        Engine engine = new Engine();
+       highLow = new HighLow(engine.getLoggedInPlayersContainer());
         deck = new Deck();
     }
 

@@ -49,11 +49,8 @@ public class Casino {
     }
 
     private void loginMenuAction(int playerID, String playerPassword){
-        try{
-            player = engine.login(playerID, playerPassword);
-        } catch (NullPointerException e){
-            player = invalidPlayer;
-        }
+
+        player = engine.login(playerID, playerPassword);
 
         if(player == invalidPlayer){
             Display.invalidUser();
