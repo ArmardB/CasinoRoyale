@@ -57,5 +57,5 @@ public class EngineTest {
         Assert.assertEquals("Should return Craps", expected, actual);
     }
 
-    
+
 }
