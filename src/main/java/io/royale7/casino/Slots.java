@@ -42,6 +42,12 @@ public class Slots extends LuckGame {
     public Slots(List<Player> playerList) {
         super(playerList);
         player = super.luckPlayers.get(0);
+
+        running = true;
+        prompted = false;
+        winAmount = 0;
+        slotsDisplay = new SlotsDisplay();
+        slotsValues = new Slot[NUMREELS][NUMREELS];
     }
 
     @Override
@@ -50,18 +56,11 @@ public class Slots extends LuckGame {
     @Override
     public double bet(double amount) { return 0; }
 
-    protected boolean isRunning() { return running; }
-    public SlotsDisplay getDisplay() { return slotsDisplay; }
     public Player getPlayer() { return player; }
     protected Slot[][] getSlots() { return slotsValues; }
     protected int getWinAmount() { return winAmount; }
 
     public void init() { // entry and exit point
-        running = true;
-        prompted = false;
-        winAmount = 0;
-        slotsDisplay = new SlotsDisplay();
-        slotsValues = new Slot[NUMREELS][NUMREELS];
         gameLoop();
     }
 
@@ -79,13 +78,13 @@ public class Slots extends LuckGame {
         }
     }
 
-    private void welcome() {
+    protected void welcome() {
         slotsDisplay.printUserInfo();
         slotsDisplay.printWelcomeMenu();
         prompted = true;
     }
 
-    private void playOrQuit(String input) {
+    protected void playOrQuit(String input) {
         switch (input) {
             case "1":
                 playSlots();

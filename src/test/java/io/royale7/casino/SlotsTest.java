@@ -31,8 +31,15 @@ public class SlotsTest {
 
     @Test
     public void determineWinningsTest() {
-        Slot[][] slots = s.getSlots();
-        slots[1] = new Slot[]{Slot.SEVEN, Slot.SEVEN, Slot.SEVEN};
+        boolean wonBig = false;
+        while (!wonBig) {
+            s.playOrQuit("1");
+            Slot[] payline = s.getSlots()[1];
+            if (payline[0] == payline[1] && payline[1] == payline[2]
+                    && payline[0] == Slot.SEVEN) {
+                wonBig = true;
+            }
+        }
         int expected = 500;
         s.determineWinnings();
         assertEquals(expected, s.getWinAmount());
@@ -41,7 +48,11 @@ public class SlotsTest {
     @Test
     public void slotsTest() {
         double enterBalance = s.getPlayer().getAccountBalance();
-//        s.init();
+        // simulate
+        s.welcome();
+        s.playOrQuit("1");
+        s.playOrQuit("2");
+
         double exitBalance = s.getPlayer().getAccountBalance();
         assertNotEquals(enterBalance, exitBalance);
     }
