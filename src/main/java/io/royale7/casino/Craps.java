@@ -34,31 +34,27 @@ public class Craps extends LuckGames {
     }
 
 
-
-
-
     private void playGame(){
 
         while(playAgain){
             int diceValue = rollDice();
 
             if(checkIfPlayerWinsOnTheFirstRoll(diceValue))
-                crapsDisplay.displayIfPlayerWantsToPlayAgain();
+                crapsDisplay.displayPlayerWins();
             else if(checkIfPlayerLosesOnTheFirstRoll(diceValue))
                 crapsDisplay.displayPlayerLoses();
             else {
                 point = diceValue;
-                do{
+                do {
                     diceValue = rollDice();
 
-                }while((diceValue != point) && (diceValue != 7));
+                } while ((diceValue != point) && (diceValue != 7));
 
-                if(checkIfNextRollOfDiceEqualsPoint(diceValue))
+                if (checkIfNextRollOfDiceEqualsPoint(diceValue))
                     crapsDisplay.displayPlayerWins();
-                else if(checkIfNextRollOfDiceEqualsSeven(diceValue))
+                else if (checkIfNextRollOfDiceEqualsSeven(diceValue))
                     crapsDisplay.displayPlayerLoses();
             }
-
             playAgain = checkIfPlayerWantsToPlayAgain();
         }
 
@@ -96,7 +92,7 @@ public class Craps extends LuckGames {
          hasPlayerWon =false;
         if (diceValue == 7 || diceValue ==11){
             hasPlayerWon = true;
-            crapsDisplay.displayPlayerWins();
+            //crapsDisplay.displayPlayerWins();
 
         }
         return hasPlayerWon;
@@ -104,9 +100,10 @@ public class Craps extends LuckGames {
 
 
      boolean checkIfPlayerLosesOnTheFirstRoll(int diceValue){
+         hasPlayerLost = false;
         if (diceValue == 2 || diceValue == 3 || diceValue == 12){
             hasPlayerLost = true;
-            crapsDisplay.displayPlayerLoses();
+            //crapsDisplay.displayPlayerLoses();
         }
         return hasPlayerLost;
     }
@@ -132,7 +129,7 @@ public class Craps extends LuckGames {
         }
 
         private void displayPlayerSize(){
-           outputLn("Player " +crapsPlayers.get(0)+ " is playing the game" );
+           outputLn("Player " +crapsPlayers.get(0).getName()+ " is playing the game" );
         }
 
     }
