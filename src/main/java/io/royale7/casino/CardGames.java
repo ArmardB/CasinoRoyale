@@ -13,9 +13,15 @@ public abstract class CardGames extends Game{
     protected Deck deck;
 
     public CardGames(){
-        this.players = super.setPlayersContainer;
+        super();
+        this.players = super.playersContainer;
+        System.out.println(players);
         this.createDeck();
         this.cardPlayers = initializeCardPlayers(players);
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 
     @Override

@@ -7,8 +7,7 @@ import java.util.List;
 public abstract class Game{
 
     private static int gameID;
-    protected List<Player> setPlayersContainer = new ArrayList<>();
-    private ArrayList<Player> players = new ArrayList<>();
+    protected List<Player> playersContainer = new ArrayList<>();
 
     public abstract void settle();
 
@@ -17,11 +16,12 @@ public abstract class Game{
     public abstract void init();
 
     public void setPlayersContainer(List<Player> players){
-        this.setPlayersContainer = players;
+        this.playersContainer = players;
+        System.out.println(playersContainer);
     }
 
-    public ArrayList<Player> getPlayers(){
-        return this.players;
+    public List<Player> getPlayers(){
+        return this.playersContainer;
     }
 
 }

@@ -10,15 +10,18 @@ import java.util.List;
 
 public class CardGamesTest {
     CardGamesMock cardGamesMock;
+    GameMock gameMock;
+
 
 
     private class CardGamesMock extends CardGames{
 
-        protected ArrayList<CardPlayer> cardPlayers;
-        protected HashMap<CardPlayer,List<Card>> gameTable;
+        List<CardPlayer> cardPlayers;
+        List<Player> samplePlayers;
+        HashMap<CardPlayer,List<Card>> gameTable;
 
-        public CardGamesMock(ArrayList<Player> players) {
-            super(players);
+        public CardGamesMock() {
+
         }
 
         public List<CardPlayer> getCardPlayers(){
@@ -26,20 +29,43 @@ public class CardGamesTest {
             return cardPlayers;
         }
 
+
         public HashMap<CardPlayer,List<Card>> getGameTable(){
             this.gameTable = super.gameTable;
             return gameTable;
         }
+        @Override
+        public void init(){}
+    }
+
+    private class GameMock extends Game{
+        List<Player> players;
+
+        public List<Player> getSamplePLayers(){
+            this.players = super.playersContainer;
+            return players;
+        }
+
+        @Override
+        public void settle(){}
+
+        @Override
+        public void bet(){}
+
+        @Override
         public void init(){}
     }
     @Before
     public void initialize(){
-        ArrayList<Player> playerList = new ArrayList<>();
-        playerList.add(new Player("Bob", "zoo"));
-        playerList.add(new Player("Bill", "aquarium"));
-        playerList.add(new Player("Joe", "safari"));
+        List<Player> samplePlayerList = new ArrayList<>();
 
-        cardGamesMock = new CardGamesMock(playerList);
+        samplePlayerList.add(new Player("Joe", "zoo"));
+        samplePlayerList.add(new Player("Bob", "zoo"));
+        samplePlayerList.add(new Player("Billy", "zoo"));
+
+        gameMock = new GameMock();
+        gameMock.setPlayersContainer(samplePlayerList);
+        cardGamesMock = new CardGamesMock();
     }
 
     @Test
@@ -50,8 +76,9 @@ public class CardGamesTest {
     @Test
     public void dealTest(){
         cardGamesMock.deal(2);
-        CardPlayer samplePlayer = cardGamesMock.getCardPlayers().get(1);
+        CardPlayer samplePlayer = cardGamesMock.cardPlayers.get(1);
         Assert.assertEquals("Should return 2", 2, cardGamesMock.getGameTable().get(samplePlayer).size());
     }
+
 
 }

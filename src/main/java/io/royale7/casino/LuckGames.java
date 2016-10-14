@@ -11,7 +11,7 @@ public abstract class LuckGames extends Game {
     protected List<Player> players = new ArrayList<>();
 
     public LuckGames(){
-        this.players = super.setPlayersContainer;
+        this.players = super.playersContainer;
     }
 
     @Override
