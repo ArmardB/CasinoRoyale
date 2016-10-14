@@ -1,9 +1,9 @@
 package io.royale7.casino;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Craps extends LuckGames {
-
     private CrapsDisplay crapsDisplay = new CrapsDisplay();
     UserInput input = new UserInput();
     private boolean hasPlayerWon = false;
@@ -11,6 +11,12 @@ public class Craps extends LuckGames {
     private boolean playAgain = true;
     private int point;
 
+    private List<Player> crapsPlayers = new ArrayList<>();
+
+    public Craps(List<Player> players) {
+        super(players);
+        this.crapsPlayers = players;
+    }
 
     public void init(){
         crapsDisplay.displayPlayerSize();
@@ -126,7 +132,7 @@ public class Craps extends LuckGames {
         }
 
         private void displayPlayerSize(){
-            outputLn("Player " +players.get(0)+ " is playing the game" );
+           outputLn("Player " +crapsPlayers.get(0)+ " is playing the game" );
         }
 
     }

@@ -9,30 +9,23 @@ public class PittyPat extends CardGames{
     private List<Card> pileOfMatches;
     private List<Card> dealerHand;
     private static int handSize = 5;
-    private List<CardPlayer> cardPlayers = new ArrayList<>();
+    private List<CardPlayer> pittypatPlayers = new ArrayList<>();
 
-    public PittyPat(){
-        this.cardPlayers = super.cardPlayers;
+    public PittyPat(ArrayList<Player> players){
+        super(players);
+        this.pittypatPlayers = super.cardPlayers;
     }
 
     public void init(){
         Display.outputLn("PittyPat");
     }
 
-    public void removeCardFromDeck(List<Card> hand){
-        for (int i = 0; i < hand.size() ; i++) {
-
-        }
+    public double settle(double winnings){
+        return 0.0;
     }
 
-
-    @Override
-    public void settle() {
-
+    public double bet(double bet){
+        return 0.0;
     }
 
-    @Override
-    public void bet() {
-
-    }
 }

@@ -19,6 +19,7 @@ public class Casino {
     }
 
     private void mainMenu(){
+        Display.royalSevenLogo();
         Display.welcomeMenu();
         mainMenuAction(UserInput.promptInt());
     }

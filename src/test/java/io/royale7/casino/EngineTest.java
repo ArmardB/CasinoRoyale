@@ -39,13 +39,13 @@ public class EngineTest {
         Assert.assertEquals("Container should be of size 2", expected,actual);
     }
 
-    @Test
-    public void playTest(){
-        Engine engine = new Engine();
-        Game actual = engine.play(1);
-        Game expected = engine.gameManager.getGame(1);
-        Assert.assertEquals("Should return Craps", expected, actual);
-    }
+//    @Test
+//    public void playTest(){
+//        Engine engine = new Engine();
+//        Game actual = engine.play(1);
+//        Game expected = engine.gameManager.getGame(1);
+//        Assert.assertEquals("Should return Craps", expected, actual);
+//    }
 
     
 }
