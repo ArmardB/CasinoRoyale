@@ -8,66 +8,22 @@ import java.util.List;
 
 public class Blackjack extends CardGames {
 
-    protected List<CardPlayer> cardPlayers = new ArrayList<>();
-    protected HashMap<CardPlayer, List<Card>> gameTable = new HashMap<>();
-    protected Deck deck;
-    protected double gamePot;
-    protected List<Card> playhand = new ArrayList<>();
+    BlackJackDisplay blackJackDisplay = new BlackJackDisplay();
     private List<CardPlayer> blackjackPlayers = new ArrayList<>();
 
-    public Blackjack(List<Player> players){
+    public Blackjack(ArrayList<Player> players){
         super(players);
-        this.createDeck();
-        this.cardPlayers = initializeCardPlayers(players);
-        this.blackjackPlayers = cardPlayers;
+        this.blackjackPlayers = super.cardPlayers;
     }
 
     public void init(){
-        Display.outputLn("Blackjack");
+        blackJackDisplay.displayWelcomeMessage();
     }
 
-    protected List<CardPlayer> initializeCardPlayers(List<Player> players){
-        cardPlayers.add(new CardPlayer());
-        for(Player player:players){
-            cardPlayers.add(new CardPlayer(player));
-        }
-        return cardPlayers;
-    }
-
-    private Deck createDeck(){
-        deck = new Deck();
-        return deck;
-    }
-
-    public HashMap<CardPlayer,List<Card>> deal(int handSize) {
-        this.shuffle();
-        this.setGameTable();
-        for(int i = 0; i < handSize; i++){
-            for (CardPlayer c: cardPlayers){
-                gameTable.get(c).add(deck.cards.get(i));
-            }
-        }
-        return gameTable;
-    }
-
-    private void shuffle(){
-        Collections.shuffle(deck.cards);
-    }
-
-    private void setGameTable(){
-        for (CardPlayer c: cardPlayers) {
-            gameTable.put(c , c.getHand());
+    public class BlackJackDisplay{
+        public void displayWelcomeMessage(){
+            Display.outputLn("Welcome to the game of BlackJack");
         }
     }
 
-    @Override
-    public double settle(double winnings){
-
-        return 0.0;
-    }
-
-    @Override
-    public void bet(double bet, Player player){
-
-    }
 }

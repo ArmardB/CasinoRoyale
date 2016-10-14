@@ -1,8 +1,10 @@
 package io.royale7.casino;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Craps extends LuckGame {
+
+public class Craps extends LuckGames {
     private CrapsDisplay crapsDisplay = new CrapsDisplay();
     UserInput input = new UserInput();
     private boolean hasPlayerWon = false;
@@ -20,16 +22,6 @@ public class Craps extends LuckGame {
     public void init(){
         crapsDisplay.displayPlayerSize();
         playGame();
-    }
-
-    @Override
-    public double settle(double winnings) {
-        return 0;
-    }
-
-    @Override
-    public double bet(double bet) {
-        return 0;
     }
 
     //Using default implementations of bet() and settle() from the LuckGame class
@@ -86,6 +78,7 @@ public class Craps extends LuckGame {
         return hasPlayerLost;
     }
 
+
     boolean checkIfPlayerWantsToPlayAgain(){
         playAgain = false;
         crapsDisplay.displayIfPlayerWantsToPlayAgain();
@@ -96,8 +89,8 @@ public class Craps extends LuckGame {
         return playAgain;
     }
 
-     boolean checkIfPlayerWinsOnTheFirstRoll(int diceValue){
-         hasPlayerWon =false;
+    boolean checkIfPlayerWinsOnTheFirstRoll(int diceValue){
+        hasPlayerWon =false;
         if (diceValue == 7 || diceValue ==11){
             hasPlayerWon = true;
             //crapsDisplay.displayPlayerWins();
@@ -107,8 +100,8 @@ public class Craps extends LuckGame {
     }
 
 
-     boolean checkIfPlayerLosesOnTheFirstRoll(int diceValue){
-         hasPlayerLost = false;
+    boolean checkIfPlayerLosesOnTheFirstRoll(int diceValue){
+        hasPlayerLost = false;
         if (diceValue == 2 || diceValue == 3 || diceValue == 12){
             hasPlayerLost = true;
             //crapsDisplay.displayPlayerLoses();
@@ -137,8 +130,10 @@ public class Craps extends LuckGame {
         }
 
         private void displayPlayerSize(){
-           outputLn("Player " +crapsPlayers.get(0).getName()+ " is playing the game" );
+            outputLn("Player " +crapsPlayers.get(0).getName()+ " is playing the game" );
         }
 
     }
+
+
 }

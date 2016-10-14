@@ -2,7 +2,7 @@ package io.royale7.casino;
 
 import java.util.List;
 
-public class HighLow extends CardGame {
+public class HighLow extends CardGames {
 
     public HighLowDisplay highLowDisplay = new HighLowDisplay();
     private List<CardPlayer> cardPlayers;
