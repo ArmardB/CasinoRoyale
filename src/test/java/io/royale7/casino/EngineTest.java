@@ -42,8 +42,9 @@ public class EngineTest {
     @Test
     public void playTest(){
         Engine engine = new Engine();
+
         Game actual = engine.play(1);
-        Game expected = engine.gameManager.getGame(1);
+        Game expected = engine.gameManager.getGame(6, engine.getLoggedInPlayersContainer());
         Assert.assertEquals("Should return Craps", expected, actual);
     }
 

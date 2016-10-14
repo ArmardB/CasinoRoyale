@@ -18,14 +18,14 @@ public class SlotsTest {
 
     @Before
     public void init() {
-        playerList = new ArrayList<>();
-        playerList.add(new Player("jon", "123"));
-        s = new Slots(playerList);
+        Engine engine = new Engine();
+        engine.createNewPlayer("jon", "123");
+        engine.login(1, "123");
+        s = new Slots(engine.getLoggedInPlayersContainer());
     }
 
     @Test
     public void setupTest() {
-//        s.init();
         assertNotNull(s.getPlayer());
     }
 

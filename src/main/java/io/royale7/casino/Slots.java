@@ -39,18 +39,15 @@ public class Slots extends LuckGame {
     private int winAmount;
 
     public Slots(List<Player> playerList) {
-        player = playerList.get(0);
+        super(playerList);
+        player = super.luckPlayers.get(0);
     }
 
     @Override
-    public void settle() {
-
-    }
+    public double settle(double amount) { return 0; }
 
     @Override
-    public void bet() {
-
-    }
+    public double bet(double amount) { return 0; }
 
     protected boolean isRunning() { return running; }
     public SlotsDisplay getDisplay() { return slotsDisplay; }
