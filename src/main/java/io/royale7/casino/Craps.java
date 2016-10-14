@@ -13,6 +13,7 @@ public class Craps extends LuckGames {
 
 
     public void init(){
+        crapsDisplay.displayPlayerSize();
         playGame();
     }
 
@@ -31,6 +32,7 @@ public class Craps extends LuckGames {
 
 
     private void playGame(){
+
         while(playAgain){
             int diceValue = rollDice();
 
@@ -121,6 +123,10 @@ public class Craps extends LuckGames {
 
         private void displayDice(int num1, int num2){
             outputLn("Dice roll result: "+num1+ " and " +num2);
+        }
+
+        private void displayPlayerSize(){
+            outputLn("Player " +players.get(0)+ " is playing the game" );
         }
 
     }
