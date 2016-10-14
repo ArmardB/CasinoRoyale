@@ -1,6 +1,7 @@
 package io.royale7.casino;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 /**
@@ -10,9 +11,11 @@ public class HorseRacing extends LuckGames{
     public int userChoice;
     public List<Horse> horsesTrack;
     public HorseMenus horseMenus;
-    protected List<Player> players = new ArrayList<>();
+    protected Player player = new Player();
 
-    public HorseRacing() {
+    public HorseRacing(List<Player> players) {
+        super(players);
+        this.player = super.luckPlayers.get(0);
         horsesTrack = new ArrayList<>();
     }
 
@@ -26,11 +29,34 @@ public class HorseRacing extends LuckGames{
         return newHorse;
     }
 
-    public void putHorsesOnTrack(Horse horsey) {
-        horsesTrack.add(horsey);
+    public void putHorsesOnTrack() {
+        Horse horse1 = createHorse("JamesBond", "22.5");
+        Horse horse2 = createHorse("Billy", "23");
+        Horse horse3 = createHorse("Bob", "23.5");
+        Horse horse4 = createHorse("Larry", "22");
+
+        horsesTrack.add(horse1);
+        horsesTrack.add(horse2);
+        horsesTrack.add(horse3);
+        horsesTrack.add(horse4);
     }
 
     private void run() {
+
+        betOnHorse();
+
+
+    }
+    private void betOnHorse() {
+        horseMenus.askWhichHorseBettingOn();
+        try {
+            userChoice = UserInput.promptInt();
+        }catch (InputMismatchException e){
+            horseMenus.wrongInput();
+            horseMenus.askWhichHorseBettingOn();
+        }
+    }
+    public void betAmount() {
 
     }
 
@@ -82,6 +108,16 @@ public class HorseRacing extends LuckGames{
 
     }
     private class HorseMenus extends Display {
+
+        public void thankYouMessage() {
+            String thanks = "Thank you have a good one";
+            outputLn(thanks);
+        }
+
+        public void wrongInput(){
+            String input = "Sorry wrong input Please Enter a NUMBER";
+            outputLn(input);
+        }
 
         public void askWhichHorseBettingOn() {
             String horsePick = "Which horse would you like to bet on?"+
