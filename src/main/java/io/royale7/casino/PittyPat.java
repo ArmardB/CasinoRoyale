@@ -3,7 +3,7 @@ package io.royale7.casino;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PittyPat extends CardGames{
+public class PittyPat extends CardGames {
     private Deck deck;
     private Card topofDeck;
     private List<Card> pileOfMatches;
@@ -17,7 +17,7 @@ public class PittyPat extends CardGames{
     }
 
     public void init(){
-        Display.outputLn("PittyPat");
+        deal(handSize);
     }
 
     public double settle(double winnings){
@@ -26,6 +26,10 @@ public class PittyPat extends CardGames{
 
     public double bet(double bet){
         return 0.0;
+    }
+
+    private class PittyPatDisplay{
+
     }
 
 }

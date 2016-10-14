@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class CardGames extends Game{
+public abstract class CardGames extends Game {
     protected List<CardPlayer> cardPlayers = new ArrayList<>();
     protected HashMap<CardPlayer, List<Card>> gameTable;
     protected Deck deck;
@@ -55,11 +55,13 @@ public abstract class CardGames extends Game{
 
     @Override
     public double settle(double winnings){
+
         return 0.0;
     }
 
     @Override
     public double bet(double bet){
+
         return 0.0;
     }
 }

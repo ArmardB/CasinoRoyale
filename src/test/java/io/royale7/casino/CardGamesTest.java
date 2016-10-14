@@ -11,7 +11,7 @@ public class CardGamesTest {
     CardGamesMock cardGamesMock;
 
 
-    private class CardGamesMock extends CardGames{
+    private class CardGamesMock extends CardGames {
 
         protected List<CardPlayer> cardPlayers;
         protected HashMap<CardPlayer,List<Card>> gameTable;
