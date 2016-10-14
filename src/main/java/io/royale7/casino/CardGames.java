@@ -38,6 +38,7 @@ public abstract class CardGames extends Game{
         for(int i = 0; i < handSize; i++){
             for (CardPlayer c: cardPlayers){
                 gameTable.get(c).add(deck.cards.get(i));
+                deck.cards.remove(i);
             }
         }
         return gameTable;
