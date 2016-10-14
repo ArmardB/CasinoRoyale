@@ -1,7 +1,5 @@
 package io.royale7.casino;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,12 +26,11 @@ public abstract class Game {
 
     public abstract double settle(double winnings);
 
-    public abstract double bet(double bet);
+    public abstract void bet(double bet, Player player);
 
 
     public List<Player> getPlayers(){
         return this.players;
     }
-
 }
 

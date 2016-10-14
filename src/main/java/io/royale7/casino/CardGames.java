@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class CardGame extends Game{
+public abstract class CardGames extends Game{
     protected List<CardPlayer> cardPlayers = new ArrayList<>();
-    protected HashMap<CardPlayer, List<Card>> gameTable;
+    protected HashMap<CardPlayer, List<Card>> gameTable = new HashMap<>();
     protected Deck deck;
 
-    public CardGame(List<Player> players){
+    public CardGames(List<Player> players){
         super(players);
         this.createDeck();
         this.cardPlayers = initializeCardPlayers(players);
@@ -38,6 +38,7 @@ public abstract class CardGame extends Game{
         for(int i = 0; i < handSize; i++){
             for (CardPlayer c: cardPlayers){
                 gameTable.get(c).add(deck.cards.get(i));
+                deck.cards.remove(i);
             }
         }
         return gameTable;
@@ -59,10 +60,21 @@ public abstract class CardGame extends Game{
     }
 
     @Override
-    public double bet(double bet){
-        return 0.0;
+    public void bet(double bet, Player player){
+        if(checkPlayerFunds(bet,player)){
+            double newAccountBalance = player.getAccountBalance() - bet;
+            player.setAccountBalance(newAccountBalance);
+        }
+        //else
+
     }
 
+    private boolean checkPlayerFunds(double bet, Player player){
+        boolean confirmation = true;
+        if(player.getAccountBalance() < bet){
+            confirmation = false;
+        }
+        return confirmation;
+    }
 }
-
 

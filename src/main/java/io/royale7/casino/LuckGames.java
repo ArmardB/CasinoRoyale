@@ -3,19 +3,25 @@ package io.royale7.casino;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class LuckGame extends Game {
+public abstract class LuckGames extends Game {
 
     protected List<Player> luckPlayers = new ArrayList<>();
 
-    public LuckGame(List<Player> players){
+    public LuckGames(List<Player> players){
         super(players);
         this.luckPlayers = players;
     }
 
     public abstract void init();
 
-    public abstract double settle(double winnings); // default implementation?
+    @Override
+    public double settle(double winnings){
+        return 0.0;
+    }
 
-    public abstract double bet(double bet); // default implementation?
+    @Override
+    public void bet(double bet, Player player){
+
+    }
 
 }
