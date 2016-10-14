@@ -24,10 +24,10 @@ public class HighLow extends CardGames {
         while(isPlaying){
             // Do some stuff
             deal(1);
-            Display.outputLn("CARD: " + cardPlayers.get(0).getHand().size());
-            Display.outputLn("CARD: " + cardPlayers.get(0).getHand().get(0).getRank());
+            //Display.outputLn("CARD: " + cardPlayers.get(0).getHand().size());
+            //2Display.outputLn("CARD: " + cardPlayers.get(1).getHand().get(0).getRank());
 
-            Display.outputLn("Will the next card be [H]igher or [L]ower...?");
+            //Display.outputLn("Will the next card be [H]igher or [L]ower...?");
 
             String userGuess = UserInput.promptString();
 
