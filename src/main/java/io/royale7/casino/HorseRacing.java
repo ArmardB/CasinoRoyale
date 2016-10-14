@@ -63,6 +63,7 @@ public class HorseRacing extends LuckGames{
         horseMenus.askForBetAmountPrompt();
         loopThroughRaceToshow();
         horseMenus.endOfRace();
+        resultMessage();
     }
 
     private void pickHorse() {
@@ -96,17 +97,27 @@ public class HorseRacing extends LuckGames{
     }
     public List<Horse> getHorseTrack(){ return horsesTrack;}
 
+    public void resultMessage() {
+        if(result().equals(userChoice)){
+            horseMenus.winningMessage();
+        }
+        else{
+            horseMenus.losingMessage();
+        }
+    }
+
     Horse result() {
        Horse endOfRace = horsesTrack.get(1);
      return endOfRace;
     }
+
     public List<Horse> shuffleHorsesPosition() {
 
        List<Horse> shuffledTrack = horsesTrack;
                Collections.shuffle(shuffledTrack);
         return shuffledTrack;
     }
-    
+
 
     public class Horse {
         private String name;
@@ -167,17 +178,25 @@ public class HorseRacing extends LuckGames{
                     "\n Third Place :( : " + horsesTrack.get(2).toString() + "\n Fourth Place :( : " + horsesTrack.get(3).toString();
            outputLn(horsesPositions);
         }
-        public void momentInRace(int i){
+        public void momentInRace(int i) {
             System.out.println("----------------------------------------------------");
-            String fourthOfAMile = i + "/4 Miles currently and the standings are!:";
-            outputLn(fourthOfAMile);
+        String fourthOfAMile = i + "/4 Miles currently and the standings are!:";
+        outputLn(fourthOfAMile);
         }
         public void endOfRace() {
-            System.out.println("----------------------------------------------------");
-            String winner = "The Winning Horse is!!! : " + horsesTrack.get(0).getName();
-            outputLn(winner);
+        System.out.println("----------------------------------------------------");
+        String winner = "The Winning Horse is!!! : " + horsesTrack.get(0).getName();
+        outputLn(winner);
         }
-        
+        public void losingMessage() {
+        String lost = "Sorry Unfortunately you LOST";
+        outputLn(lost);
+        }
+
+        public void winningMessage() {
+        String won = "Congrats!!! you Win!!!";
+        outputLn(won);
+        }
 
 
     }
