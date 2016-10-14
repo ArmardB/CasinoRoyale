@@ -6,19 +6,31 @@ import java.util.Map;
 
 public class Blackjack extends CardGames{
 
-    BlackjackDisplay blackjackDisplay = new BlackjackDisplay();
+
+    BlackJackDisplay blackJackDisplay = new BlackJackDisplay();
     private List<CardPlayer> blackjackPlayers = new ArrayList<>();
     private Map<CardPlayer,List<Card>> blackjackPlayerHands;
 
-    public Blackjack(List<Player> players){
+
+    public Blackjack(ArrayList<Player> players){
         super(players);
         this.blackjackPlayers = super.cardPlayers;
     }
 
     public void init(){
-        blackjackDisplay.displayWelcomeMessage();
-        blackjackDisplay.displayPlayers();
+
         playGame();
+        blackJackDisplay.displayWelcomeMessage();
+    }
+
+
+
+
+
+    public class BlackJackDisplay{
+        public void displayWelcomeMessage(){
+            Display.outputLn("Welcome to the game of BlackJack");
+        }
     }
 
 
@@ -42,29 +54,6 @@ public class Blackjack extends CardGames{
 
 
 
-
-    private class BlackjackDisplay{
-
-        public void displayWelcomeMessage(){
-            Display.outputLn("Welcome to the game of Blackjack");
-        }
-
-
-        private void displayPlayers(){
-            Display.outputLn("Players playing the game: ");
-            for (int i=0; i<blackjackPlayers.size(); i++){
-                Display.outputLn(blackjackPlayers.get(i).getCardPlayerName());
-            }
-        }
-
-
-
-
-
-
     }
 
 
-
-
-}
