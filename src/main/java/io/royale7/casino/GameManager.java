@@ -29,7 +29,7 @@ public class GameManager {
 
         //gameContainer.put(2, new Slots());
         //gameContainer.put(3, new HorseRacing());
-        //gameContainer.put(4, new Blackjack());
+        gameContainer.put(4, new Blackjack(loggedInPlayersContainer));
         //gameContainer.put(5, new Baccarat());
         gameContainer.put(6, new War(loggedInPlayersContainer));
         gameContainer.put(7, new HighLow(loggedInPlayersContainer));

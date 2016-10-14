@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class CardGames extends Game{
     protected List<CardPlayer> cardPlayers = new ArrayList<>();
-    protected HashMap<CardPlayer, List<Card>> gameTable;
+    protected HashMap<CardPlayer, List<Card>> gameTable = new HashMap<>();
     protected Deck deck;
 
     public CardGames(List<Player> players){
