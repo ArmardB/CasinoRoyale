@@ -34,6 +34,7 @@ public class Slots extends LuckGame {
 
     private boolean running;
     private boolean prompted;
+    private boolean played;
     private Slot[][] slotsValues;
     private final int NUMREELS = 3;
     private int winAmount;
@@ -61,28 +62,30 @@ public class Slots extends LuckGame {
         winAmount = 0;
         slotsDisplay = new SlotsDisplay();
         slotsValues = new Slot[NUMREELS][NUMREELS];
-        for (int row = 0; row < NUMREELS; row++) {
-            for (int value = 0; value < NUMREELS; value++) {
-                slotsValues[row][value] = getRandomSlotValue();
-            }
-        }
         gameLoop();
     }
 
     public void gameLoop() {
         while (running) {
             if (prompted) {
-                playOrQuit(UserInput.promptString());
-                determineWinnings();
+                if (played) {
+                    playAgainOrQuit();
+                } else {
+                    playOrQuit(UserInput.promptString());
+                }
             } else {
-                slotsDisplay.printUserInfo();
-                slotsDisplay.printWelcomeMenu();
-                prompted = true;
+                welcome();
             }
         }
     }
 
-    public void playOrQuit(String input) {
+    private void welcome() {
+        slotsDisplay.printUserInfo();
+        slotsDisplay.printWelcomeMenu();
+        prompted = true;
+    }
+
+    private void playOrQuit(String input) {
         switch (input) {
             case "1":
                 playSlots();
@@ -96,15 +99,27 @@ public class Slots extends LuckGame {
         }
     }
 
-    public void playSlots() {
-        for (Slot[] rows : slotsValues) {
-            for (Slot slot : rows) {
-                slot = getRandomSlotValue();
-            }
-        }
+    private void playAgainOrQuit() {
+        slotsDisplay.printUserInfo();
+        slotsDisplay.printEndPrompt();
+        winAmount = 0;
+        played = false;
+        playOrQuit(UserInput.promptString());
     }
 
-    public void determineWinnings() {
+    private void playSlots() {
+        for (int row = 0; row < NUMREELS; row++) {
+            for (int value = 0; value < NUMREELS; value++) {
+                slotsValues[row][value] = getRandomSlotValue();
+            }
+        }
+        slotsDisplay.printSlots();
+        determineWinnings();
+        slotsDisplay.printWinnings();
+        played = true;
+    }
+
+    protected void determineWinnings() {
         boolean won = true;
         Slot[] payoutLine = slotsValues[1]; // just middle for now
         Slot checkValue = payoutLine[0];
@@ -129,7 +144,7 @@ public class Slots extends LuckGame {
         }
     }
 
-    public void quit() {
+    private void quit() {
         Display.logOutMenu();
         running = false;
     }
@@ -139,11 +154,13 @@ public class Slots extends LuckGame {
             outputLn("Welcome my son to Slooooooooooooooooooooots. What do?");
             outputLn("[1] Play - $100");
             outputLn("[2] Quit");
+            outputLn("");
         }
 
         private void printUserInfo() {
             outputLn(player.getName());
             Display.printFormatBalance(player.getAccountBalance());
+            outputLn("");
         }
 
         private void printSlots() {
@@ -151,20 +168,23 @@ public class Slots extends LuckGame {
                 for (Slot slot : rows) {
                     System.out.printf("[%s]", slot.name());
                 }
-                System.out.println();
+                outputLn("");
             }
+            outputLn("");
         }
 
         private void printWinnings() {
             outputLn("I guess you won...");
             System.out.print("+");
             Display.printFormatBalance(winAmount);
+            outputLn("");
         }
 
         private void printEndPrompt() {
             outputLn("Now what?");
-            outputLn("[1] Play - $100");
+            outputLn("[1] I'm feeling it, Mr. Krabs - $100");
             outputLn("[2] Quit");
+            outputLn("");
         }
     }
 }
