@@ -11,7 +11,7 @@ public abstract class CardGames extends Game{
     protected List<Card> playerHand = new ArrayList<>();
     protected Deck deck;
 
-    public CardGames(List<Player> players){
+    public CardGames(ArrayList<Player> players){
         super(players);
         this.createDeck();
         this.cardPlayers = initializeCardPlayers(players);

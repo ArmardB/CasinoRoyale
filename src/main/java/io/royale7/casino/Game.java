@@ -7,14 +7,14 @@ import java.util.List;
 public abstract class Game {
 
     private static int gameID;
-    private List<Player> setPlayers;
-    private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Player> setPlayers;
+    private ArrayList<Player> players = new ArrayList<Player>();
 
     public Game(ArrayList<Player> players){
         this.players = players;
     }
 
-    public void setPlayers(List<Player> players){
+    public void setPlayers(ArrayList<Player> players){
         this.setPlayers= players;
     }
 

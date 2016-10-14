@@ -11,7 +11,7 @@ public class PittyPat extends CardGames{
     private static int handSize = 5;
     private List<CardPlayer> cardPlayers = new ArrayList<>();
 
-    public PittyPat(List<Player> players){
+    public PittyPat(ArrayList<Player> players){
         super(players);
         this.cardPlayers = super.cardPlayers;
     }

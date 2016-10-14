@@ -9,7 +9,7 @@ public class HighLow extends CardGames {
     private List<CardPlayer> cardPlayers;
     private boolean isPlaying = true;
 
-    public HighLow(List<Player> players){
+    public HighLow(ArrayList<Player> players){
        super(players);
         this.cardPlayers = super.cardPlayers;
     }
