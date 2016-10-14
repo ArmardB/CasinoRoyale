@@ -4,7 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
+
+/*
  * Created by armardbellamy on 10/12/16.
  */
 public class HiLowTest {

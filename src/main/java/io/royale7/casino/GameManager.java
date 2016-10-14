@@ -22,9 +22,11 @@ public class GameManager {
     //won't work until all games are created and extend Game
     public Map<Integer, Game> gameContainer;
 
+
     public void createGamesContainer(List<Player> loggedInPlayersContainer){
         this.gameContainer = new HashMap<Integer, Game>();
-        //gameContainer.put(1, new Craps());
+        gameContainer.put(1, new Craps(loggedInPlayersContainer));
+
         //gameContainer.put(2, new Slots());
         //gameContainer.put(3, new HorseRacing());
         //gameContainer.put(4, new Blackjack());
@@ -33,7 +35,6 @@ public class GameManager {
         gameContainer.put(7, new HighLow(loggedInPlayersContainer));
         gameContainer.put(8, new PittyPat(loggedInPlayersContainer));
     }
-
 
     //May return Null
     public Game getGame(int gameId, List<Player> loggedInPlayersContainer){
