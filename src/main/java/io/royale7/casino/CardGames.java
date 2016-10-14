@@ -7,8 +7,10 @@ import java.util.List;
 
 public abstract class CardGames extends Game {
     protected List<CardPlayer> cardPlayers = new ArrayList<>();
-    protected HashMap<CardPlayer, List<Card>> gameTable;
+    protected HashMap<CardPlayer, List<Card>> gameTable = new HashMap<>();
     protected Deck deck;
+    protected double gamePot;
+    protected List<Card> playhand = new ArrayList<>();
 
     public CardGames(List<Player> players){
         super(players);
@@ -49,7 +51,7 @@ public abstract class CardGames extends Game {
 
     private void setGameTable(){
         for (CardPlayer c: cardPlayers) {
-            gameTable.put(c, c.getHand());
+            gameTable.put(c , c.getHand());
         }
     }
 
@@ -60,9 +62,21 @@ public abstract class CardGames extends Game {
     }
 
     @Override
-    public double bet(double bet){
+    public void bet(double bet, Player player){
+        if(checkPlayerFunds(bet,player)){
+            double newAccountBalance = player.getAccountBalance() - bet;
+            player.setAccountBalance(newAccountBalance);
+        }
+        //else
 
-        return 0.0;
+    }
+
+    public boolean checkPlayerFunds(double bet, Player player){
+        boolean confirmation = true;
+        if(player.getAccountBalance() < bet){
+            confirmation = false;
+        }
+        return confirmation;
     }
 }
 
