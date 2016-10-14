@@ -10,7 +10,7 @@ public abstract class CardGames extends Game{
     protected HashMap<CardPlayer, List<Card>> gameTable;
     protected Deck deck;
 
-    public CardGames(ArrayList<Player> players){
+    public CardGames(List<Player> players){
         super(players);
         this.createDeck();
         this.cardPlayers = initializeCardPlayers(players);

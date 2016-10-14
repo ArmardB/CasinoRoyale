@@ -6,14 +6,15 @@ import org.junit.Test;
 public class SlotsTest {
     Slots s;
 
-//    @Before
-//    public void init() {
-//        s = new Slots();
-//    }
-//
-//    @Test
-//    public void setupTest() {
-//
-//    }
+    @Before
+    public void init() {
+        Engine engine = new Engine();
+        s = new Slots(engine.getLoggedInPlayersContainer());
+    }
+
+    @Test
+    public void setupTest() {
+
+    }
 
 }
