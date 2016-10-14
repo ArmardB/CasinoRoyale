@@ -1,5 +1,6 @@
 package io.royale7.casino;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Slots extends LuckGames {
@@ -12,6 +13,13 @@ public class Slots extends LuckGames {
     private String outputString;
     private String[] slotsValues;
     private int winAmount;
+
+    private List<Player> slotPlayers = new ArrayList<>();
+
+    public Slots(List<Player> players){
+        super(players);
+        this.slotPlayers = super.luckPlayers;
+    }
 
     public boolean isRunning() { return running; }
 
