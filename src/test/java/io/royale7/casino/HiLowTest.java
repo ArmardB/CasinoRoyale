@@ -14,7 +14,8 @@ public class HiLowTest {
 
     @Before
     public void init(){
-       highLow = new HighLow();
+        Engine engine = new Engine();
+       highLow = new HighLow(engine.getLoggedInPlayersContainer());
         deck = new Deck();
     }
 

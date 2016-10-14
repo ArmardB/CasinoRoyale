@@ -8,7 +8,8 @@ public class SlotsTest {
 
     @Before
     public void init() {
-        s = new Slots();
+        Engine engine = new Engine();
+        s = new Slots(engine.getLoggedInPlayersContainer());
     }
 
     @Test
