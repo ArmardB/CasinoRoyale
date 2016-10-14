@@ -1,27 +1,35 @@
 package io.royale7.casino;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by nazhirjackson on 10/13/16.
  */
-public class HorseRacing extends LuckGames{
-    public int userChoice;
-    public List<Horse> horsesTrack;
+public class HorseRacing extends LuckGame{
+    public Horse userChoice;
+    public Map<Integer, Horse> horsesTrack;
     public HorseMenus horseMenus;
     protected Player player = new Player();
 
     public HorseRacing(List<Player> players) {
         super(players);
         this.player = super.luckPlayers.get(0);
-        horsesTrack = new ArrayList<>();
+        horsesTrack = new HashMap<>();
     }
 
     @Override
     public void init() {
         run();
+    }
+
+    @Override
+    public double settle(double winnings) {
+        return 0;
+    }
+
+    @Override
+    public double bet(double bet) {
+        return 0;
     }
 
     public Horse createHorse(String name, String speed){
@@ -35,10 +43,10 @@ public class HorseRacing extends LuckGames{
         Horse horse3 = createHorse("Bob", "23.5");
         Horse horse4 = createHorse("Larry", "22");
 
-        horsesTrack.add(horse1);
-        horsesTrack.add(horse2);
-        horsesTrack.add(horse3);
-        horsesTrack.add(horse4);
+        horsesTrack.put(1, horse1);
+        horsesTrack.put(2, horse2);
+        horsesTrack.put(3,horse3);
+        horsesTrack.put(4,horse4);
     }
 
     private void run() {
@@ -50,7 +58,8 @@ public class HorseRacing extends LuckGames{
     private void betOnHorse() {
         horseMenus.askWhichHorseBettingOn();
         try {
-            userChoice = UserInput.promptInt();
+            int choice = UserInput.promptInt();
+            userChoice = horsesTrack.get(choice);
         }catch (InputMismatchException e){
             horseMenus.wrongInput();
             horseMenus.askWhichHorseBettingOn();
@@ -75,12 +84,22 @@ public class HorseRacing extends LuckGames{
         }
         
     }
-    public List<Horse> getHorseTrack(){ return horsesTrack;}
-    private Horse result() {
-        return null;
+    public Map<Integer, Horse> getHorseTrack(){ return horsesTrack;}
+
+    Horse result() {
+       Horse endOfRace = horsesTrack.get(1);
+     return endOfRace;
     }
-    private List<Horse> shuffleHorsesPosition() {
-        return null;
+    private Map<Integer, Horse> shuffleHorsesPosition() {
+
+        List<Integer> keys = new ArrayList(horsesTrack.keySet());
+        Collections.shuffle(keys);
+        Map<Integer, Horse> shuffledTrack = new HashMap<>();
+        for (Integer o : keys) {
+
+            shuffledTrack.put(o,horsesTrack.get(o));
+        }
+        return shuffledTrack;
     }
 
     public class Horse {
