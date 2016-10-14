@@ -62,7 +62,6 @@ public abstract class CardGames extends Game{
     public double bet(double bet){
         return 0.0;
     }
-
 }
 
 

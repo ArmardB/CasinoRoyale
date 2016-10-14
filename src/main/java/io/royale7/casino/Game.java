@@ -23,6 +23,5 @@ public abstract class Game {
     public List<Player> getPlayers(){
         return this.players;
     }
-
 }
 
