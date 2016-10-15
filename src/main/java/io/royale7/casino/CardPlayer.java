@@ -29,5 +29,9 @@ public class CardPlayer {
     protected int getCardPlayerID() {
         return player.getId();
     }
+
+    protected  String getCardPlayerName(){
+        return player.getName();
+    }
 }
 

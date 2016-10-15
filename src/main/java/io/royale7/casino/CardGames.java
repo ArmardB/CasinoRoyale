@@ -7,10 +7,11 @@ import java.util.List;
 
 public abstract class CardGames extends Game{
     protected List<CardPlayer> cardPlayers = new ArrayList<>();
-    protected HashMap<CardPlayer, List<Card>> gameTable;
+    protected HashMap<CardPlayer, List<Card>> gameTable = new HashMap<>();
     protected Deck deck;
 
-    public CardGames(ArrayList<Player> players){
+
+    public CardGames(List<Player> players){
         super(players);
         this.createDeck();
         this.cardPlayers = initializeCardPlayers(players);
@@ -54,13 +55,30 @@ public abstract class CardGames extends Game{
     }
 
     @Override
-    public double settle(double winnings){
-        return 0.0;
+    public double settle(double winnings, Player player){
+        double newAccountBalance = player.getAccountBalance() + winnings;
+        player.setAccountBalance(newAccountBalance);
+        return player.getAccountBalance();
     }
 
     @Override
-    public double bet(double bet){
-        return 0.0;
+    public void bet(double bet, Player player){
+        if(checkPlayerFunds(bet,player)){
+            double newAccountBalance = player.getAccountBalance() - bet;
+            player.setAccountBalance(newAccountBalance);
+        }
+        else{
+            Display.outputLn("Unfortunately, you do not have enough funds for that bet");
+        }
+
+    }
+
+    private boolean checkPlayerFunds(double bet, Player player){
+        boolean confirmation = true;
+        if(player.getAccountBalance() < bet){
+            confirmation = false;
+        }
+        return confirmation;
     }
 
 }

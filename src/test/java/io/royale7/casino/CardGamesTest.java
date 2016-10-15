@@ -34,7 +34,7 @@ public class CardGamesTest {
     }
     @Before
     public void initialize(){
-        ArrayList<Player> playerList = new ArrayList<>();
+        List<Player> playerList = new ArrayList<>();
         playerList.add(new Player("Bob", "zoo"));
         playerList.add(new Player("Bill", "aquarium"));
         playerList.add(new Player("Joe", "safari"));

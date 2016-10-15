@@ -31,9 +31,9 @@ public class GameManager {
         //gameContainer.put(6, new War());
         gameContainer.put(7, new HighLow(loggedInPlayersContainer));
         gameContainer.put(8, new PittyPat(loggedInPlayersContainer));
-        gameContainer.put(6, new War(loggedInPlayersContainer));
-        gameContainer.put(7, new HighLow(loggedInPlayersContainer));
-        gameContainer.put(8, new PittyPat(loggedInPlayersContainer));
+//        gameContainer.put(6, new War(loggedInPlayersContainer));
+//        gameContainer.put(7, new HighLow(loggedInPlayersContainer));
+//        gameContainer.put(8, new PittyPat(loggedInPlayersContainer));
 
     }
 
