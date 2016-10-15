@@ -15,7 +15,7 @@ public abstract class LuckGames extends Game {
     public abstract void init();
 
     @Override
-    public double settle(double winnings){
+    public double settle(double winnings, Player player){
         return 0.0;
     }
 

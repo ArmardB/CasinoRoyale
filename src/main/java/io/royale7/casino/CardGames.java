@@ -54,8 +54,10 @@ public abstract class CardGames extends Game{
     }
 
     @Override
-    public double settle(double winnings){
-        return 0.0;
+    public double settle(double winnings, Player player){
+        double newAccountBalance = player.getAccountBalance() + winnings;
+        player.setAccountBalance(newAccountBalance);
+        return player.getAccountBalance();
     }
 
     @Override
@@ -64,7 +66,10 @@ public abstract class CardGames extends Game{
             double newAccountBalance = player.getAccountBalance() - bet;
             player.setAccountBalance(newAccountBalance);
         }
-        //else
+
+        else{
+            Display.outputLn("Unfortunately, you do not have enough funds for that bet");
+        }
 
     }
 
@@ -75,5 +80,6 @@ public abstract class CardGames extends Game{
         }
         return confirmation;
     }
+
 }
 

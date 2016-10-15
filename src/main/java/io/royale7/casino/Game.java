@@ -17,14 +17,13 @@ public abstract class Game {
         this.players = players;
     }
 
-
     public void setPlayers(ArrayList<Player> players){
         this.setPlayers= players;
     }
 
     public abstract void init();
 
-    public abstract double settle(double winnings);
+    public abstract double settle(double winnings, Player player);
 
     public abstract void bet(double bet, Player player);
 
