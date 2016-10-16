@@ -41,9 +41,8 @@ public class HighLow extends CardGames {
     }
 
     @Override
-    public boolean bet(double bet, Player player) {
+    public void bet(double bet, Player player) {
         super.bet(bet, player);
-        return true;
     }
 
     void shuffleDeck(){
