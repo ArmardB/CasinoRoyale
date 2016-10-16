@@ -11,6 +11,7 @@ public class HighLow extends CardGames {
     private List<CardPlayer> highLowPlayers;
     private boolean playAgain = true;
     Deck deck;
+    private double userBet;
 
 
     public HighLow(List<Player> player) {
@@ -27,6 +28,9 @@ public class HighLow extends CardGames {
         while (playAgain) {
             deck = new Deck();
             shuffleDeck();
+            highLowDisplay.displayBet();
+            userBet = UserInput.promptDouble();
+            bet(userBet, getPlayers().get(0));
             addCardToTable();
             removeCardFromDeck();
             showCard(cardsOnTable.get(0));
@@ -34,6 +38,12 @@ public class HighLow extends CardGames {
             String userResponse = UserInput.promptString().toLowerCase();
             determineWinner(userResponse);
         }
+    }
+
+    @Override
+    public boolean bet(double bet, Player player) {
+        super.bet(bet, player);
+        return true;
     }
 
     void shuffleDeck(){
@@ -56,7 +66,8 @@ public class HighLow extends CardGames {
     }
 
     void checkIfGuessIsHigher(){
-        if ((cardsOnTable.get(cardsOnTable.size()-1)).getRank().getCardValue() > (cardsOnTable.get(cardsOnTable.size()-2)).getRank().getCardValue()){
+        if ((cardsOnTable.get(cardsOnTable.size()-1)).getRank().getCardValue() >
+                (cardsOnTable.get(cardsOnTable.size()-2)).getRank().getCardValue()){
             Display.outputLn("YOU WON");
         }else {
            checkIfPlayerWantsToPlayAgain();
@@ -64,7 +75,8 @@ public class HighLow extends CardGames {
     }
 
     void checkIfGuessIsLower(){
-        if ((cardsOnTable.get(cardsOnTable.size()-1)).getRank().getCardValue() < (cardsOnTable.get(cardsOnTable.size()-2)).getRank().getCardValue()){
+        if ((cardsOnTable.get(cardsOnTable.size()-1)).getRank().getCardValue() <
+                (cardsOnTable.get(cardsOnTable.size()-2)).getRank().getCardValue()){
             Display.outputLn("YOU WON");
         }else {
             checkIfPlayerWantsToPlayAgain();
@@ -108,9 +120,11 @@ public class HighLow extends CardGames {
             outputLn("Welcome to the game of Hi-Low");
         }
 
-        private void displayBet(){
+        public void displayBet(){
             outputLn("How much do you want to bet?");
         }
+
+
 
 
     }

@@ -38,6 +38,7 @@ public abstract class CardGames extends Game{
         for(int i = 0; i < handSize; i++){
             for (CardPlayer c: cardPlayers){
                 gameTable.get(c).add(deck.cards.get(i));
+                deck.cards.remove(i);
             }
         }
         return gameTable;
@@ -65,9 +66,7 @@ public abstract class CardGames extends Game{
         if(checkPlayerFunds(bet,player)){
             double newAccountBalance = player.getAccountBalance() - bet;
             player.setAccountBalance(newAccountBalance);
-        }
-
-        else{
+        } else{
             Display.outputLn("Unfortunately, you do not have enough funds for that bet");
         }
 

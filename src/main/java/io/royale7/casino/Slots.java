@@ -44,7 +44,7 @@ public class Slots extends LuckGames {
     }
 
     @Override
-    public double settle(double amount) { return 0; }
+    public double settle(double amount, Player player) { return 0; }
 
     @Override
     public void bet(double bet, Player player) {}
